@@ -2,30 +2,25 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import {
   Stack,
-  Button,
-  TextField,
-  IconButton,
-  Box,
-  useMediaQuery,
-  useTheme,
+  Button
 } from "@mui/material";
-import { LocationOn, Search } from "@mui/icons-material";
-import { keyframes } from "@emotion/react";
-import Logo_Dark from "../assets/images/Logo_Light.png";
+import Logo_Dark from "../assets/images/Logo_Dark.png";
+import SearchBar from "./SearchBar";
 
 const Navbar = () => {
   const [activeLink, setActiveLink] = useState("home");
   return (
     <Stack
       direction="row"
-      justifyContent="space-around"
+      justifyContent="center"
       alignItems="center"
-      position="relative"
+      position="absolute"
       flexWrap="wrap"
       sx={{
         gap: { xs: "20px" },
         mt: "2px",
-        px: "20px"
+        px: "20px",
+        zIndex: 1000,
       }}
     >
       {/* Rendering Logo */}
@@ -40,7 +35,9 @@ const Navbar = () => {
           }}
         />
       </Link>
-
+      <Stack order={{ xs: 2, sm: 2 }}>
+        <SearchBar />
+      </Stack>
       {/* Rendering Home link */}
       <Stack
         direction="row"
@@ -49,13 +46,13 @@ const Navbar = () => {
         fontSize={{ xs: "16px", sm: "24px" }}
         alignItems="flex-end"
         mt={{ xs: "10px", sm: "0px" }}
-        order={{ xs: 2, sm: 2 }}
+        order={{ xs: 3, sm: 3 }}
       >
         <Link
           to="/"
           style={{
             textDecoration: "none",
-            color: "#3A1212",
+            color: "#FFFFF0",
             borderBottom: activeLink === "home" ? "3px solid #FF2625" : "none",
           }}
           onClick={() => setActiveLink("home")}
@@ -66,7 +63,7 @@ const Navbar = () => {
           href="#about"
           style={{
             textDecoration: "none",
-            color: "#3A1212",
+            color: "#FFFFF0",
             borderBottom: activeLink === "about" ? "3px solid #FF2625" : "none",
           }}
           onClick={() => setActiveLink("about")}
@@ -77,7 +74,7 @@ const Navbar = () => {
           href="#contact"
           style={{
             textDecoration: "none",
-            color: "#3A1212",
+            color: "#FFFFF0",
             borderBottom:
               activeLink === "contact" ? "3px solid #FF2625" : "none",
           }}
