@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+      
+  
+  <modelVersion>4.0.0</modelVersion>
+      
+  
+  <parent>
+            
+    
+    <groupId>org.jbundle.util.webapp</groupId>
+            
+    
+    <artifactId>jbundle-util-webapp-reactor</artifactId>
+            
+    
+    <version>1.0.1-SNAPSHOT</version>
+          
+  
+  </parent>
+      
+  
+  <!-- Note: I include the version and groups in each pom, because they will become archetypes -->
+      
+  
+  <groupId>mavenMVCArchetype</groupId>
+      
+  
+  <artifactId>com</artifactId>
+      
+  
+  <version>0.0.1-SNAPSHOT</version>
+      
+  
+  <packaging>pom</packaging>
+      
+  
+  <name>jbundle-util-webapp-webstart - simple project</name>
+      
+  
+  <properties>
+            
+    
+    <package>org.jbundle.util.webapp.webstart.code</package>
+            
+    
+    <jbundleScmPath>util/webapp</jbundleScmPath>
+          
+  
+  </properties>
+      
+  
+  <description>This project provides a template for a Applet or Application servlet.
+ This project packages and runs a WebStart application.
+ This example shows both Web Start applets and an application.</description>
+      
+  
+  <dependencies>
+            
+    
+    <dependency>
+                  
+      
+      <groupId>javax.servlet</groupId>
+                  
+      
+      <artifactId>servlet-api</artifactId>
+                  
+      
+      <scope>provided</scope>
+                
+    
+    </dependency>
+          
+  
+  </dependencies>
+    
+  
+  <modules>
+          
+    
+    <module>code</module>
+          
+    
+    <module>jnlp</module>
+      
+  </modules>
+  
+</project>

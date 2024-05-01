@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>mavenMVCArchetype</groupId>
+    <artifactId>com</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+
+  <!-- Note: I include the version and groups in each pom, becuase they will become archetypes -->
+  <groupId>mavenMVCArchetype</groupId>
+  <artifactId>org.jbundle.util.webapp.webstart.code</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+
+  <name>jbundle-util-webapp-webstart-code</name>
+  <packaging>bundle</packaging>	<!-- It is a good practice to add the osgi packaging to the jar manifest -->
+
+  <build>
+    <plugins>
+      <plugin>	<!-- Lets you run your app standalone by typing exec:java -->
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <executions>
+          <execution>
+          	<phase>run</phase>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+            <mainClass>mavenMVCArchetype.com.App</mainClass>	<!-- These properties are declared in my parent pom (jbundle-util-webapp-webstart) -->
+        </configuration>
+      </plugin>
+      
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <configuration>
+          <archive>
+            <manifestFile>src/main/resources/META-INF/MANIFEST.MF</manifestFile>
+          </archive>
+        </configuration>
+      </plugin>
+      
+      <plugin>
+        <groupId>org.apache.felix</groupId>
+        <artifactId>maven-bundle-plugin</artifactId>
+        <extensions>true</extensions>
+        <configuration>
+          <instructions>
+            <Bundle-ManifestVersion>2</Bundle-ManifestVersion>
+            <Bundle-SymbolicName>${project.groupId}.${project.artifactId}</Bundle-SymbolicName>
+            <Export-Package>mavenMVCArchetype.com;version=${project.version}</Export-Package>
+            <Import-Package>*;resolution:=optional,</Import-Package>
+            <Bundle-Version>${project.version}</Bundle-Version>
+            <Main-Class>mavenMVCArchetype.com.App</Main-Class>	<!-- Standalone support -->
+          </instructions>
+        </configuration>
+      </plugin>
+
+    </plugins>
+  </build>
+
+</project>
