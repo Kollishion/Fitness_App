@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Typography, Button } from "@mui/material";
-import Home_Hero from "../assets/images/Home_Hero.jpg";
+import hero_2 from "../assets/images/hero_2.jpg";
 
 const HeroBanner = () => {
   return (
@@ -9,7 +9,8 @@ const HeroBanner = () => {
         position="absolute"
         display="flex"
         flexDirection="column"
-        sx={{ top: "50%", left: "50%", transform: "translate(-50%, -50%)" }}
+        sx={{ top: "60%", left: "50%", transform: "translate(-50%, -50%)" }}
+        textAlign="center"
       >
         <Typography color="#FF2625" fontWeight="600" fontSize="26px">
           Fitness Fusion
@@ -19,11 +20,22 @@ const HeroBanner = () => {
           color="#F0F8FF"
           sx={{
             fontSize: { lg: "44px", xs: "40px" },
+            background: "linear-gradient(#eee, red)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent"
           }}
         >
           Sweat, Smile <br /> and Repeat
         </Typography>
-        <Typography lineHeight="35px" mb="2px">
+        <Typography
+          lineHeight="35px"
+          mb="2px"
+          sx={{
+            background: "linear-gradient(gray, red)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent"
+          }}
+        >
           Check out the most effective excercises and products
         </Typography>
         <Button
@@ -32,7 +44,13 @@ const HeroBanner = () => {
           href="#excercises"
           sx={{
             backgroundColor: "#ff2625",
-            padding: "10px",
+            padding: "5px",
+            width: "30%",
+            position: "absolute",
+            cursor: "pointer",
+            zIndex: "2",
+            top: "50%",
+            left: "35%",
           }}
         >
           Explore Excercises
@@ -50,7 +68,7 @@ const HeroBanner = () => {
           Excercise
         </Box>
       </Box>
-      <img src={Home_Hero} alt="banner" className="hero-banner-img" />
+      <img src={hero_2} alt="banner" className="hero-banner-img" />
     </Box>
   );
 };

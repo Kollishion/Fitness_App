@@ -9,38 +9,47 @@ const SearchForm = () => {
       sx={{
         display: "flex",
         alignItems: "center",
-        backgroundColor: "transparent",
+        backgroundColor: "white",
         padding: "8px",
-        borderRadius: "4px"
+        borderRadius: "4px",
       }}
       className="search-container"
     >
       <TextField
         variant="outlined"
         fullWidth
-        placeholder="Search for products, equipments and supplements"
+        placeholder="Search for products, equipments, and supplements"
         sx={{
-          "& .MuiOutlinedInput-notchedOutline": {
-            borderColor: "red", 
-            borderWidth: "2px"
+          "& .MuiOutlinedInput-root": {
+            "& fieldset": {
+              borderColor: "transparent", // Ensure outline is transparent by default
+            },
+            "&:hover fieldset": {
+              borderColor: "transparent", // Avoid outline on hover
+            },
+            "&.Mui-focused fieldset": {
+              borderColor: "transparent", // Avoid outline on focus
+            },
           },
           "& .MuiInputBase-input::placeholder": {
-            color: "white",
-            opacity: 1
+            color: "darkred",
+            opacity: 1,
           },
           "& .MuiInputBase-input": {
-            caretColor: "white"
-          }
+            caretColor: "black",
+          },
         }}
         InputProps={{
           endAdornment: (
-            <IconButton
-              aria-label="search"
-              component="a" // This can be a Link or a navigation action
-              href="#"
-            >
-              <SearchIcon style={{ color: "red", backgroundColor: "white",
-            borderRadius: "50%" }} />
+            <IconButton aria-label="search">
+              <SearchIcon
+                style={{
+                  color: "red",
+                  backgroundColor: "ivory",
+                  borderRadius: "50%",
+                  fontSize: "32px"
+                }}
+              />
             </IconButton>
           ),
         }}

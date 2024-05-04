@@ -6,7 +6,7 @@ import {
 } from "@mui/material";
 import Logo_Dark from "../assets/images/Logo_Dark.png";
 import SearchBar from "./SearchBar";
-
+import { CiShoppingCart } from "react-icons/ci";
 const Navbar = () => {
   const [activeLink, setActiveLink] = useState("home");
   return (
@@ -16,6 +16,9 @@ const Navbar = () => {
       alignItems="center"
       position="absolute"
       flexWrap="wrap"
+      top={0}
+      right={0}
+      left={0}
       sx={{
         gap: { xs: "20px" },
         mt: "2px",
@@ -89,7 +92,7 @@ const Navbar = () => {
             textDecoration: "none",
             color: "white",
             backgroundColor: "#FF2625",
-            padding: "2.8px 20px",
+            padding: "2px 18px",
             borderRadius: "5px",
             cursor: "pointer",
             transition: "all 0.3s", // Smooth transition for hover effects
@@ -100,6 +103,25 @@ const Navbar = () => {
           }}
         >
           Login
+        </Button>
+        <Button
+          component={Link}
+          to="/checkout"
+          sx={{
+            fontSize: "20px",
+            textDecoration: "none",
+            color: "#FF2625",
+            cursor: "pointer",
+            transition: "all 0.3s", // Smooth transition for hover effects
+            backgroundColor: "white",
+            borderRadius: "30%",
+            "&:hover": {
+              // Hover properties
+              backgroundColor: "antiquewhite", // Change color on hover
+            },
+          }}
+        >
+          <CiShoppingCart />
         </Button>
       </Stack>
     </Stack>

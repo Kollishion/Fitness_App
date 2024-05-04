@@ -60,6 +60,8 @@ cd frontend
 # Install npm packages:
 npm install
 Run the Frontend
+# React icons package:
+npm i react-icons
 # Start the React development server:
 npm start
 Usage
