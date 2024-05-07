@@ -1,105 +1,236 @@
-import React from 'react';
+import React from "react";
 import {
   Container,
   Grid,
   Typography,
   Box,
-  IconButton,
   TextField,
-  Button,
-  AppBar,
-  Toolbar,
-  Icon,
+  IconButton,
+  Link
 } from "@mui/material";
-import { Facebook, Twitter, Google } from "@mui/icons-material";
+import {
+  Facebook as FacebookIcon,
+  Twitter as TwitterIcon,
+  Google as GoogleIcon,
+  Telegram as TelegramIcon,
+  LocationOn as LocationOnIcon,
+  Phone as PhoneIcon,
+  Email as EmailIcon,
+} from "@mui/icons-material";
 
 const Footer = () => {
   return (
-    <AppBar position="static" component="footer"> 
+    <Box
+      component="footer"
+      sx={{
+        backgroundColor: "#151414",
+        color: "#757575",
+        padding: "20px 0",
+      }}
+    >
       <Container>
-        {/* Contact Section */}
-        <Grid container spacing={3} sx={{ padding: '20px 0' }}>
-          <Grid item xs={12} md={4}>
-            <Box display="flex" alignItems="center">
-              <Icon className="fas fa-map-marker-alt" />
-              <Box ml={2}>
-                <Typography variant="h6">Find us</Typography>
-                <Typography>1010 Avenue, sw 54321, chandigarh</Typography>
+        <Box
+          sx={{
+            borderBottom: "1px solid #373636",
+            paddingTop: "20px",
+            paddingBottom: "20px",
+          }}
+        >
+          <Grid container spacing={3}>
+            <Grid item xs={12} md={4}>
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                }}
+              >
+                <LocationOnIcon sx={{ color: "#ff5e14", fontSize: "30px" }} />
+                <Box sx={{ paddingLeft: "15px" }}>
+                  <Typography variant="h6" color="#fff">
+                    Find us
+                  </Typography>
+                  <Typography>1010 Avenue, SW 54321, Chandigarh</Typography>
+                </Box>
               </Box>
-            </Box>
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <Box display="flex" alignItems="center">
-              <Icon className="fas fa-phone" />
-              <Box ml={2}>
-                <Typography variant="h6">Call us</Typography>
-                <Typography>9876543210 0</Typography>
+            </Grid>
+            <Grid item xs={12} md={4}>
+              <Box sx={{ display: "flex", alignItems: "center" }}>
+                <PhoneIcon sx={{ color: "#ff5e14", fontSize: "30px" }} />
+                <Box sx={{ paddingLeft: "15px" }}>
+                  <Typography variant="h6" color="#fff">
+                    Call us
+                  </Typography>
+                  <Typography>9876543210</Typography>
+                </Box>
               </Box>
-            </Box>
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <Box display="flex" alignItems="center">
-              <Icon className="far fa-envelope-open" />
-              <Box ml={2}>
-                <Typography variant="h6">Mail us</Typography>
-                <Typography>mail@info.com</Typography>
+            </Grid>
+            <Grid item xs={12} md={4}>
+              <Box sx={{ display: "flex", alignItems: "center" }}>
+                <EmailIcon sx={{ color: "#ff5e14", fontSize: "30px" }} />
+                <Box sx={{ paddingLeft: "15px" }}>
+                  <Typography variant="h6" color="#fff">
+                    Mail us
+                  </Typography>
+                  <Typography>mail@info.com</Typography>
+                </Box>
               </Box>
-            </Box>
+            </Grid>
           </Grid>
-        </Grid>
+        </Box>
 
-        {/* Content Section */}
-        <Grid container spacing={3} sx={{ padding: '20px 0' }}>
-          <Grid item xs={12} md={4}>
-            <Box>
-              <img src="https://i.ibb.co/QDy827D/ak-logo.png" alt="logo" style={{ width: '100px' }} />
-              <Typography variant="body2">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.
-              </Typography>
-              <Box mt={2}>
-                <Typography variant="body2">Follow us:</Typography>
-                <IconButton href="#">
-                  <Facebook />
-                </IconButton>
-                <IconButton href="#">
-                  <Twitter />
-                </IconButton>
-                <IconButton href="#">
-                  <Google />
-                </IconButton>
+        <Box sx={{ paddingTop: "20px", paddingBottom: "20px" }}>
+          <Grid container spacing={3}>
+            <Grid item xs={12} md={4}>
+              <Box>
+                <Typography variant="h6" color="#fff">
+                  Follow us
+                </Typography>
+                <Box sx={{ display: "flex", alignItems: "center" }}>
+                  <Link href="#">
+                    <IconButton
+                      sx={{ backgroundColor: "#3B5998", color: "#fff" }}
+                    >
+                      <FacebookIcon />
+                    </IconButton>
+                  </Link>
+                  <Link href="#">
+                    <IconButton
+                      sx={{ backgroundColor: "#55ACEE", color: "#fff" }}
+                    >
+                      <TwitterIcon />
+                    </IconButton>
+                  </Link>
+                  <Link href="#">
+                    <IconButton
+                      sx={{ backgroundColor: "#DD4B39", color: "#fff" }}
+                    >
+                      <GoogleIcon />
+                    </IconButton>
+                  </Link>
+                </Box>
               </Box>
-            </Box>
-          </Grid>
+            </Grid>
 
-          <Grid item xs={12} md={4}>
-            <Typography variant="h6">Useful Links</Typography>
-            <ul>
-              <li><a href="#">Home</a></li>
-              <li><a href="#">About</a></li>
-              <li><a href="#">Services</a></li>
-              <li><a href="#">Portfolio</a></li>
-              <li><a href="#">Contact</a></li>
-            </ul>
-          </Grid>
+            <Grid item xs={12} md={4}>
+              <Box>
+                <Typography variant="h6" sx={{ color: "#fff" }}>
+                  Useful Links
+                </Typography>
+                <Box component="ul" sx={{ listStyle: "none", padding: "0" }}>
+                  <li>
+                    <Link href="#" sx={{ color: "#878787" }}>
+                      Home
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="#" sx={{ color: "#878787" }}>
+                      About
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="#" sx={{ color: "#878787" }}>
+                      Contact
+                    </Link>
+                  </li>
+                </Box>
+              </Box>
+            </Grid>
 
-          <Grid item xs={12} md={4}>
-            <Typography variant="h6">Subscribe</Typography>
-            <Typography variant="body2">Don’t miss to subscribe to our new feeds, kindly fill the form below.</Typography>
-            <Box component="form">
-              <TextField
-                label="Email Address"
-                variant="outlined"
-                size="small"
-                fullWidth
-              />
-              <Button variant="contained" color="primary" endIcon={<Icon className="fab fa-telegram-plane" />}>
-                Subscribe
-              </Button>
-            </Box>
+            <Grid item xs={12} md={4}>
+              <Box>
+                <Typography variant="h6" sx={{ color: "#fff" }}>
+                  Subscribe
+                </Typography>
+                <Typography sx={{ color: "#7e7e7e" }}>
+                  Don’t miss to subscribe to our new feeds, kindly fill the form
+                  below.
+                </Typography>
+                <Box
+                  sx={{
+                    position: "relative",
+                    overflow: "hidden",
+                    marginTop: "10px",
+                  }}
+                >
+                  <TextField
+                    placeholder="Email Address"
+                    variant="outlined"
+                    //ooooooooooo
+                    fullWidth
+                    sx={{
+                      backgroundColor: "#2E2E2E",
+                      color: "#fff",
+                      borderColor: "#2E2E2E",
+                      "& .MuiInputBase-input::placeholder": {
+                        color: "whitesmoke",
+                        opacity: 1,
+                      },
+                    }}
+                  />
+                  <IconButton
+                    sx={{
+                      position: "absolute",
+                      top: "0",
+                      right: "0",
+                      backgroundColor: "#ff5e14",
+                      padding: "13px 20px",
+                      border: "1px solid #ff5e14",
+                    }}
+                  >
+                    <TelegramIcon style={{ color: "#fff" }} />
+                  </IconButton>
+                </Box>
+              </Box>
+            </Grid>
           </Grid>
-        </Grid>
+        </Box>
+
+        <Box
+          sx={{
+            backgroundColor: "#202020",
+            padding: "25px 0",
+          }}
+        >
+          <Container>
+            <Grid container>
+              <Grid item xs={12} md={6}>
+                <Typography variant="body2" sx={{ color: "#878787" }}>
+                  Copyright &copy; 2018, All Rights Reserved{" "}
+                  <Link
+                    to='/'
+                    sx={{ color: "#ff5e14", cursor: "pointer" }}
+                  >
+                    FitnessFusion
+                  </Link>
+                </Typography>
+              </Grid>
+              <Grid item xs={12} md={6} sx={{ textAlign: "right" }}>
+                <Box
+                  component="ul"
+                  sx={{ listStyle: "none", padding: "0", margin: "0" }}
+                >
+                  <li sx={{ display: "inline-block", marginRight: "20px" }}>
+                    <Link to="/" sx={{ color: "#878787" }}>
+                      Home
+                    </Link>
+                  </li>
+                  <li sx={{ display: "inline-block", marginRight: "20px" }}>
+                    <Link to="/about" sx={{ color: "#878787" }}>
+                      About
+                    </Link>
+                  </li>
+                  <li sx={{ display: "inline-block", marginRight: "20px" }}>
+                    <Link to="/contact" sx={{ color: "#878787" }}>
+                      Contact
+                    </Link>
+                  </li>
+                </Box>
+              </Grid>
+            </Grid>
+          </Container>
+        </Box>
       </Container>
-    </AppBar>
+    </Box>
   );
 };
 

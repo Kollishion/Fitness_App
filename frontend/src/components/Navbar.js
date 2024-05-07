@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import {
-  Stack,
-  Button
-} from "@mui/material";
+import { Stack, Button } from "@mui/material";
 import Logo_Dark from "../assets/images/Logo_Dark.png";
 import SearchBar from "./SearchBar";
 import { CiShoppingCart } from "react-icons/ci";
+
 const Navbar = () => {
   const [activeLink, setActiveLink] = useState("home");
+
+  const handleLinkClick = (link) => {
+    setActiveLink(link);
+  };
+
   return (
     <Stack
       direction="row"
@@ -26,8 +29,7 @@ const Navbar = () => {
         zIndex: 1000,
       }}
     >
-      {/* Rendering Logo */}
-      <Link to="/" style={{ order: 1 }}>
+      <Link to="/" onClick={() => handleLinkClick("home")} style={{ order: 1 }}>
         <img
           src={Logo_Dark}
           alt="FitnessFusion"
@@ -38,10 +40,11 @@ const Navbar = () => {
           }}
         />
       </Link>
+
       <Stack order={{ xs: 2, sm: 2 }}>
         <SearchBar />
       </Stack>
-      {/* Rendering Home link */}
+
       <Stack
         direction="row"
         gap="20px"
@@ -58,36 +61,37 @@ const Navbar = () => {
             color: "#FFFFF0",
             borderBottom: activeLink === "home" ? "3px solid #FF2625" : "none",
           }}
-          onClick={() => setActiveLink("home")}
+          onClick={() => handleLinkClick("home")}
         >
           Home
         </Link>
-        <a
-          href="#about"
+        <Link
+          to="/about"
           style={{
             textDecoration: "none",
             color: "#FFFFF0",
             borderBottom: activeLink === "about" ? "3px solid #FF2625" : "none",
           }}
-          onClick={() => setActiveLink("about")}
+          onClick={() => handleLinkClick("about")}
         >
           About
-        </a>
-        <a
-          href="#contact"
+        </Link>
+        <Link
+          to="/contact"
           style={{
             textDecoration: "none",
             color: "#FFFFF0",
             borderBottom:
               activeLink === "contact" ? "3px solid #FF2625" : "none",
           }}
-          onClick={() => setActiveLink("contact")}
+          onClick={() => handleLinkClick("contact")}
         >
           Contact
-        </a>
+        </Link>
         <Button
           component={Link}
           to="/login"
+          onClick={() => handleLinkClick("login")}
           sx={{
             textDecoration: "none",
             color: "white",
@@ -97,7 +101,6 @@ const Navbar = () => {
             cursor: "pointer",
             transition: "all 0.3s", // Smooth transition for hover effects
             "&:hover": {
-              // Hover properties
               backgroundColor: "#E24A40", // Change color on hover
             },
           }}
@@ -112,11 +115,10 @@ const Navbar = () => {
             textDecoration: "none",
             color: "#FF2625",
             cursor: "pointer",
-            transition: "all 0.3s", // Smooth transition for hover effects
+            transition: "all 0.3s",
             backgroundColor: "white",
             borderRadius: "30%",
             "&:hover": {
-              // Hover properties
               backgroundColor: "antiquewhite", // Change color on hover
             },
           }}

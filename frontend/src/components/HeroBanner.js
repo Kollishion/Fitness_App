@@ -9,7 +9,7 @@ const HeroBanner = () => {
         position="absolute"
         display="flex"
         flexDirection="column"
-        sx={{ top: "60%", left: "50%", transform: "translate(-50%, -50%)" }}
+        sx={{ top: "45%", left: "50%", transform: "translate(-50%, -50%)" }}
         textAlign="center"
       >
         <Typography color="#FF2625" fontWeight="600" fontSize="26px">
@@ -22,7 +22,7 @@ const HeroBanner = () => {
             fontSize: { lg: "44px", xs: "40px" },
             background: "linear-gradient(#eee, red)",
             WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent"
+            WebkitTextFillColor: "transparent",
           }}
         >
           Sweat, Smile <br /> and Repeat
@@ -31,12 +31,11 @@ const HeroBanner = () => {
           lineHeight="35px"
           mb="2px"
           sx={{
-            background: "linear-gradient(gray, red)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent"
+            color: "white",
+            fontWeight: "bold"
           }}
         >
-          Check out the most effective excercises and products
+          Check out the most span effective excercises and products
         </Typography>
         <Button
           variant="contained"
@@ -49,24 +48,12 @@ const HeroBanner = () => {
             position: "absolute",
             cursor: "pointer",
             zIndex: "2",
-            top: "50%",
-            left: "35%",
+            top: "100%",
+            left: "35%"
           }}
         >
           Explore Excercises
         </Button>
-        <Box
-          fontWeight="600"
-          color="#ff2625"
-          sx={{
-            opacity: "0.1",
-            display: { lg: "block", xs: "none" },
-          }}
-          fontSize="170px"
-          style={{ lineHeight: "unset" }}
-        >
-          Excercise
-        </Box>
       </Box>
       <img src={hero_2} alt="banner" className="hero-banner-img" />
     </Box>
