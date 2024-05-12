@@ -1,5 +1,6 @@
 body {
   font-family: "Josefin Sans";
+  
 }
 
 * {
@@ -11,6 +12,7 @@ html,
 body {
   height: 100%;
   width: 100%;
+  font-family: "Josefin Sans", 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 ::-webkit-scrollbar {
   width: 0px;
@@ -21,10 +23,29 @@ body {
   object-fit: cover;
   z-index: -5;
   position: absolute;
-   background-image: linear-gradient(to left, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0)),
-    linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0)),
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0)), 
-    linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+  background-image: 
+    linear-gradient(to left, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), 
+    linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7));
+}
+.hero-banner-img::after{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(1, 1, 1, 1);
+  backdrop-filter: blur(30px);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  color: #fff;
+  border-radius: 10px;
+  padding: 30px 40px;
+}
+.login-background-image{
+  position: absolute;
+
 }
 .search-container{
   width: 600px;
@@ -67,7 +88,12 @@ input#search-bar{
   top: -62px;
   right: -45px;
 }
-
+.company_logos{
+  position: absolute;
+  z-index: 5;
+  object-fit: cover;
+  width: 45px;
+}
 
 .exercise-card {
   width: 400px;

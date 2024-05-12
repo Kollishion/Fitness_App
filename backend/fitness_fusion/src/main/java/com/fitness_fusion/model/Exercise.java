@@ -2,11 +2,23 @@ package com.fitness_fusion.model;
 
 import com.example.app.common.DifficultyLevel;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+@Entity
+@Table(name = "exercises")
 public class Exercise {
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
     private String title;
     private String imageUrl;
     private String instructions;
+    @Enumerated(EnumType.STRING)
     private DifficultyLevel difficultyLevel;
 	public Long getId() {
 		return id;

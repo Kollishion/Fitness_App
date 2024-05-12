@@ -7,7 +7,7 @@ import { CiShoppingCart } from "react-icons/ci";
 
 const Navbar = () => {
   const [activeLink, setActiveLink] = useState("home");
-
+  const [addProductToCart, setAddProductToCart] = useState("");
   const handleLinkClick = (link) => {
     setActiveLink(link);
   };
@@ -36,7 +36,7 @@ const Navbar = () => {
           style={{
             width: "100px",
             height: "90px",
-            marginRight: "20px",
+            marginRight: "20px"
           }}
         />
       </Link>

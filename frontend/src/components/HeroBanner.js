@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Typography, Button } from "@mui/material";
 import hero_2 from "../assets/images/hero_2.jpg";
-
+import { Link } from "react-router-dom";
 const HeroBanner = () => {
   return (
     <Box position="relative" width="100%" height="100dvh">
@@ -32,28 +32,30 @@ const HeroBanner = () => {
           mb="2px"
           sx={{
             color: "white",
-            fontWeight: "bold"
+            fontWeight: "bold",
           }}
         >
-          Check out the most span effective excercises and products
+          Check out the most effective excercises and products
         </Typography>
-        <Button
-          variant="contained"
-          color="error"
-          href="#excercises"
-          sx={{
-            backgroundColor: "#ff2625",
-            padding: "5px",
-            width: "30%",
-            position: "absolute",
-            cursor: "pointer",
-            zIndex: "2",
-            top: "100%",
-            left: "35%"
-          }}
-        >
-          Explore Excercises
-        </Button>
+        <Link to="/exerciseDetail">
+          <Button
+            variant="contained"
+            color="error"
+            href="#excercises"
+            sx={{
+              backgroundColor: "#ff2625",
+              padding: "5px",
+              width: "30%",
+              position: "absolute",
+              cursor: "pointer",
+              zIndex: "2",
+              top: "100%",
+              left: "35%",
+            }}
+          >
+            Explore Excercises
+          </Button>
+        </Link>
       </Box>
       <img src={hero_2} alt="banner" className="hero-banner-img" />
     </Box>

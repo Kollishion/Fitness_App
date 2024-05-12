@@ -1,13 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Container,
   Grid,
   Typography,
   Box,
   TextField,
-  IconButton,
-  Link
+  IconButton
 } from "@mui/material";
+import { Link } from "react-router-dom";
 import {
   Facebook as FacebookIcon,
   Twitter as TwitterIcon,
@@ -17,8 +17,10 @@ import {
   Phone as PhoneIcon,
   Email as EmailIcon,
 } from "@mui/icons-material";
+import Navbar from "./Navbar";
 
 const Footer = () => {
+    const [activeLink, setActiveLink] = useState("home");
   return (
     <Box
       component="footer"
@@ -118,17 +120,17 @@ const Footer = () => {
                 </Typography>
                 <Box component="ul" sx={{ listStyle: "none", padding: "0" }}>
                   <li>
-                    <Link href="#" sx={{ color: "#878787" }}>
+                    <Link to="/" sx={{ color: "#878787" }}>
                       Home
                     </Link>
                   </li>
                   <li>
-                    <Link href="#" sx={{ color: "#878787" }}>
+                    <Link to="/about" sx={{ color: "#878787" }}>
                       About
                     </Link>
                   </li>
                   <li>
-                    <Link href="#" sx={{ color: "#878787" }}>
+                    <Link href="/contact" sx={{ color: "#878787" }}>
                       Contact
                     </Link>
                   </li>
@@ -203,28 +205,6 @@ const Footer = () => {
                     FitnessFusion
                   </Link>
                 </Typography>
-              </Grid>
-              <Grid item xs={12} md={6} sx={{ textAlign: "right" }}>
-                <Box
-                  component="ul"
-                  sx={{ listStyle: "none", padding: "0", margin: "0" }}
-                >
-                  <li sx={{ display: "inline-block", marginRight: "20px" }}>
-                    <Link to="/" sx={{ color: "#878787" }}>
-                      Home
-                    </Link>
-                  </li>
-                  <li sx={{ display: "inline-block", marginRight: "20px" }}>
-                    <Link to="/about" sx={{ color: "#878787" }}>
-                      About
-                    </Link>
-                  </li>
-                  <li sx={{ display: "inline-block", marginRight: "20px" }}>
-                    <Link to="/contact" sx={{ color: "#878787" }}>
-                      Contact
-                    </Link>
-                  </li>
-                </Box>
               </Grid>
             </Grid>
           </Container>
