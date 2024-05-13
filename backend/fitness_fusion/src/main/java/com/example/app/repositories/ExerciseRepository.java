@@ -4,8 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.example.app.common.DifficultyLevel;
-import com.fitness_fusion.model.Exercise;
-
+import com.example.model.Exercise; 
 import java.util.List;
 
 @Repository

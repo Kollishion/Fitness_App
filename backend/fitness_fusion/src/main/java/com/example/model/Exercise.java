@@ -1,4 +1,4 @@
-package com.fitness_fusion.model;
+package com.example.model;
 
 import com.example.app.common.DifficultyLevel;
 

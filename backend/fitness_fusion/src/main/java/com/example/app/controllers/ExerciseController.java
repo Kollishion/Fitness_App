@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.app.common.DifficultyLevel;
 import com.example.app.services.ExerciseService;
-import com.fitness_fusion.model.Exercise;
+import com.example.model.Exercise;
 
 
 @RestController

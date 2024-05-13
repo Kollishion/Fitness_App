@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.app.common.DifficultyLevel;
 import com.example.app.repositories.ExerciseRepository;
-import com.fitness_fusion.model.Exercise;
+import com.example.model.Exercise;
 
 @Service
 public class ExerciseService {
