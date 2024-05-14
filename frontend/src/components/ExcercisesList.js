@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-
+import TimerThirty from "./timers/TimerThirty";
+import TimerFifteen from "./timers/TimerFifteen";
 const ExerciseList = () => {
   const [exercises, setExercises] = useState([]);
 
@@ -9,7 +10,9 @@ const ExerciseList = () => {
     const fetchExercises = async () => {
       try {
         // Make a GET request to your Spring Boot API
-        const response = await axios.get("/api/exercises");
+        const response = await axios.get(
+          "http://localhost:8080/exercises/getAll"
+        );
         // Set the fetched exercises in the state
         setExercises(response.data);
       } catch (error) {
@@ -29,11 +32,13 @@ const ExerciseList = () => {
   return (
     <div>
       <h2>Exercise List</h2>
+      <TimerThirty />
+      <TimerFifteen />
       <ul>
         {exercises.map((exercise) => (
           <li key={exercise.id}>
             <h3>{exercise.title}</h3>
-            <img src={exercise.imageUrl} alt={exercise.title} />
+            <img src={exercise.imageurl} alt={exercise.title} />
             <p>{exercise.instructions}</p>
             <p>Difficulty: {exercise.difficultyLevel}</p>
           </li>
