@@ -62,6 +62,9 @@ npm install
 Run the Frontend
 # React icons package:
 npm i react-icons
+# Gsap install for animations
+npm i gsap
+npm install @gsap/react
 # Start the React development server:
 npm start
 Usage

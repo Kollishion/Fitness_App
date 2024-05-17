@@ -7,8 +7,7 @@ const Home = () => {
   return (
     <Box>
       <HeroBanner />
-      <Logos />
-        
+      {/* <Logos /> */}
     </Box>
   );
 };

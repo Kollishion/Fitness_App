@@ -12,6 +12,7 @@ const SearchForm = () => {
         backgroundColor: "white",
         padding: "8px",
         borderRadius: "4px",
+        maxWidth: "50vw",
       }}
       className="search-container"
     >
@@ -47,7 +48,7 @@ const SearchForm = () => {
                   color: "red",
                   backgroundColor: "ivory",
                   borderRadius: "50%",
-                  fontSize: "32px"
+                  fontSize: "32px",
                 }}
               />
             </IconButton>

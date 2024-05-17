@@ -1,16 +1,34 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Stack, Button } from "@mui/material";
-import Logo_Dark from "../assets/images/Logo_Dark.png";
+import logo_dark from "../assets/images/logo_dark.jpg";
 import SearchBar from "./SearchBar";
 import { CiShoppingCart } from "react-icons/ci";
+import { MdCancel } from "react-icons/md";
+import { GiHamburgerMenu } from "react-icons/gi";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import "../stylesheets/navbar.css";
 
 const Navbar = () => {
-  const [activeLink, setActiveLink] = useState("home");
-  const [addProductToCart, setAddProductToCart] = useState("");
-  const handleLinkClick = (link) => {
-    setActiveLink(link);
+  const [isOpen, setIsOpen] = useState(false);
+  const handleClick = () => {
+    setIsOpen(!isOpen);
   };
+  useGSAP(() => {
+    gsap.from(".logo", {
+      y: -150,
+      duration: 1,
+      delay: 0.5,
+      opacity: 0,
+    });
+    gsap.from(".overlay", {
+      y: -150,
+      duration: 0.5,
+      delay: 0.2,
+      opacity: 0,
+    });
+  });
 
   return (
     <Stack
@@ -29,15 +47,16 @@ const Navbar = () => {
         zIndex: 1000,
       }}
     >
-      <Link to="/" onClick={() => handleLinkClick("home")} style={{ order: 1 }}>
+      <Link to="/" style={{ order: 1 }}>
         <img
-          src={Logo_Dark}
+          src={logo_dark}
           alt="FitnessFusion"
           style={{
             width: "100px",
             height: "90px",
-            marginRight: "20px"
+            marginRight: "20px",
           }}
+          className="logo"
         />
       </Link>
 
@@ -54,44 +73,9 @@ const Navbar = () => {
         mt={{ xs: "10px", sm: "0px" }}
         order={{ xs: 3, sm: 3 }}
       >
-        <Link
-          to="/"
-          style={{
-            textDecoration: "none",
-            color: "#FFFFF0",
-            borderBottom: activeLink === "home" ? "3px solid #FF2625" : "none",
-          }}
-          onClick={() => handleLinkClick("home")}
-        >
-          Home
-        </Link>
-        <Link
-          to="/about"
-          style={{
-            textDecoration: "none",
-            color: "#FFFFF0",
-            borderBottom: activeLink === "about" ? "3px solid #FF2625" : "none",
-          }}
-          onClick={() => handleLinkClick("about")}
-        >
-          About
-        </Link>
-        <Link
-          to="/contact"
-          style={{
-            textDecoration: "none",
-            color: "#FFFFF0",
-            borderBottom:
-              activeLink === "contact" ? "3px solid #FF2625" : "none",
-          }}
-          onClick={() => handleLinkClick("contact")}
-        >
-          Contact
-        </Link>
         <Button
           component={Link}
           to="/login"
-          onClick={() => handleLinkClick("login")}
           sx={{
             textDecoration: "none",
             color: "white",
@@ -107,11 +91,12 @@ const Navbar = () => {
         >
           Login
         </Button>
+
         <Button
           component={Link}
           to="/checkout"
           sx={{
-            fontSize: "20px",
+            fontSize: "18px",
             textDecoration: "none",
             color: "#FF2625",
             cursor: "pointer",
@@ -125,7 +110,34 @@ const Navbar = () => {
         >
           <CiShoppingCart />
         </Button>
+        {isOpen ? (
+          <MdCancel className="link_bar" onClick={handleClick} />
+        ) : (
+          <GiHamburgerMenu className="link_bar" onClick={handleClick} />
+        )}
       </Stack>
+
+      {isOpen && (
+        <div className="overlay">
+          <Stack
+            direction="column"
+            alignItems="center"
+            justifyContent="center"
+            height="100vh"
+            gap="20px"
+          >
+            <Link to="/" className="overlay-link" onClick={handleClick}>
+              Home
+            </Link>
+            <Link to="/about" className="overlay-link" onClick={handleClick}>
+              About
+            </Link>
+            <Link to="/contact" className="overlay-link" onClick={handleClick}>
+              Contact
+            </Link>
+          </Stack>
+        </div>
+      )}
     </Stack>
   );
 };

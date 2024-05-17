@@ -9,7 +9,12 @@ const HeroBanner = () => {
         position="absolute"
         display="flex"
         flexDirection="column"
-        sx={{ top: "45%", left: "50%", transform: "translate(-50%, -50%)" }}
+        sx={{
+          top: "45%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          zIndex: 2,
+        }}
         textAlign="center"
       >
         <Typography color="#FF2625" fontWeight="600" fontSize="26px">
@@ -41,7 +46,6 @@ const HeroBanner = () => {
           <Button
             variant="contained"
             color="error"
-            href="#excercises"
             sx={{
               backgroundColor: "#ff2625",
               padding: "5px",
@@ -58,6 +62,14 @@ const HeroBanner = () => {
         </Link>
       </Box>
       <img src={hero_2} alt="banner" className="hero-banner-img" />
+      <Box
+        sx={{
+          backgroundColor: "rgba(0, 0, 0, 0.321)",
+          width: "100%",
+          height: "100%",
+          position: "relative",
+        }}
+      ></Box>
     </Box>
   );
 };
