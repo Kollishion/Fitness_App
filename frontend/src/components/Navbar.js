@@ -75,7 +75,7 @@ const Navbar = () => {
       >
         <Button
           component={Link}
-          to="/login"
+          to="/Login"
           sx={{
             textDecoration: "none",
             color: "white",
