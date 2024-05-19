@@ -29,6 +29,18 @@ const App = () => {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/exerciseDetail" element={<ExerciseDetail />} />
+          <Route
+            path="/beginner"
+            element={<DifficultyBasedExercises difficultyLevel="0" />}
+          />
+          <Route
+            path="/intermediate"
+            element={<DifficultyBasedExercises difficultyLevel="1" />}
+          />
+          <Route
+            path="/advanced"
+            element={<DifficultyBasedExercises difficultyLevel="2" />}
+          />
           <Route path="/cart/:id" element={<ShopCart />} />
           <Route path="/Login" element={<Login />} />
           <Route path="/exercises" element={<DifficultyBasedExercises />} />
