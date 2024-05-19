@@ -19,7 +19,7 @@ The Fitness App provides users with a platform to log workouts, set fitness goal
 
 ## Technology Stack
 
-- **Frontend:** React, React Router, Axios
+- **Frontend:** React, React Router, Axios, GSAP, MUI
 - **Backend:** Spring Boot, Spring Security, JPA/Hibernate
 - **Database:** MySQL
 - **Build Tools:** Maven, npm
@@ -40,7 +40,9 @@ The Fitness App provides users with a platform to log workouts, set fitness goal
 git clone https://github.com/your-username/fitness-app.git
 cd fitness-app
 ```
+
 ### Backend Setup
+
 Database Configuration
 Create a MySQL database with a name of your choice.
 Update the application.properties file in src/main/resources with your database credentials:
@@ -51,21 +53,38 @@ Build and Run the Backend
 Build the Spring Boot application:
 bash
 mvn clean install
+
 # Run the application:
+
 mvn spring-boot:run
+
 # Frontend Setup
+
 # Install Dependencies
+
 Navigate to the frontend folder:
 cd frontend
+
 # Install npm packages:
+
 npm install
 Run the Frontend
+
 # React icons package:
+
 npm i react-icons
+
 # Gsap install for animations
+
 npm i gsap
 npm install @gsap/react
+
+# Material UI
+
+npm install @mui/material @emotion/react @emotion/styled
+
 # Start the React development server:
+
 npm start
 Usage
 Open the App
