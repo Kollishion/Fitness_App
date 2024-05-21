@@ -10,15 +10,24 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Login from "./pages/Login";
 import DifficultyBasedExercises from "./components/DifficultyBasedExercises";
+import CardComponent from "./components/CardComponent";
 import "./App.css";
 
 const App = () => {
   const location = useLocation();
   const isLoginRoute = location.pathname === "/Login";
   const isExerciseDetailRoute = location.pathname === "/exerciseDetail";
+  const isAdvanced = location.pathname === "/advanced";
+  const isIntermediate = location.pathname === "/intermediate";
+  const isBeginner = location.pathname === "/beginner";
 
   const shouldShowNavbar = !isLoginRoute && !isExerciseDetailRoute;
-  const shouldShowFooter = !isLoginRoute && !isExerciseDetailRoute;
+  const shouldShowFooter =
+    !isLoginRoute &&
+    !isBeginner &&
+    !isIntermediate &&
+    !isAdvanced &&
+    !isExerciseDetailRoute;
 
   return (
     <Box sx={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
@@ -44,6 +53,7 @@ const App = () => {
           <Route path="/cart/:id" element={<ShopCart />} />
           <Route path="/Login" element={<Login />} />
           <Route path="/exercises" element={<DifficultyBasedExercises />} />
+          <Route path="/CardComponent" element={<CardComponent />} />
         </Routes>
       </Box>
       {shouldShowFooter && <Footer />}

@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Grid, Paper } from "@mui/material";
+import { styled } from "@mui/system";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
+import { Link } from "react-router-dom";
 
 const DifficultyBasedExercises = ({ difficultyLevel }) => {
   const [exercises, setExercises] = useState([]);
-
   useEffect(() => {
     const fetchExercises = async () => {
       try {
@@ -24,22 +28,89 @@ const DifficultyBasedExercises = ({ difficultyLevel }) => {
     fetchExercises();
   }, [difficultyLevel]);
 
+  const Root = styled("div")({
+    display: "flex",
+    gap: "30px",
+    flexWrap: "wrap",
+    justifyContent: "center",
+    alignItems: "center",
+    height: "100%",
+    background: "linear-gradient(to right, #8e9eab, #eef2f3)",
+    marginTop: "20vh",
+    position: "relative",
+  });
+
+  const StyledCard = styled(Card)({
+    width: 220,
+    height: 400, // Ensures all cards are the same height
+    borderRadius: 20,
+    overflow: "hidden",
+    color: "#616161",
+    boxShadow:
+      "0px 10px 20px rgba(0, 0, 0, 0.19), 0px 6px 6px rgba(0, 0, 0, 0.23)",
+    cursor: "pointer",
+    transition: "transform .2s ease-in-out",
+    "&:hover": {
+      transform: "scale(1.1)",
+    },
+  });
+
+  const CardHeader = styled("div")({
+    height: 200,
+    display: "grid",
+    placeItems: "center",
+    borderRadius: "100% 0 100% 0 / 0 50% 50% 100%",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+  });
+
+  const CardContentWrapper = styled(CardContent)({
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    width: "100%", // Use full width of the card
+    height: "150px", // Ensure fixed height for content
+    justifyContent: "space-between", // Distribute space evenly
+  });
+
+  const Title = styled(Typography)({
+    textAlign: "center",
+    textTransform: "uppercase",
+    fontSize: 16,
+    margin: "10px 0",
+  });
+
+  const Text = styled(Typography)({
+    textAlign: "center",
+    fontSize: 12,
+    margin: "10px 0",
+  });
+
+  const StyledButton = styled(Button)({
+    border: "none",
+    borderRadius: 100,
+    padding: "5px 30px",
+    color: "#fff",
+    marginBottom: 15,
+    textTransform: "uppercase",
+    background: "#616161", // Add background color for visibility
+  });
+
   return (
-    <div>
-      <h2>Exercises</h2>
-      <Grid container spacing={2}>
-        {exercises.map((exercise) => (
-          <Grid item key={exercise.id} xs={12} sm={6} md={4}>
-            <Paper>
-              <h3>{exercise.title}</h3>
-              <img src={exercise.imageUrl} alt={exercise.title} />
-              <p>{exercise.instructions}</p>
-              <p>Difficulty: {exercise.difficultyLevel}</p>
-            </Paper>
-          </Grid>
-        ))}
-      </Grid>
-    </div>
+    <Root>
+      {exercises.map((exercise) => (
+        <StyledCard key={exercise.id}>
+          <CardHeader style={{ backgroundImage: `url(${exercise.imageUrl})` }}>
+            {/* Optionally, add any icon or content here */}
+          </CardHeader>
+          <CardContentWrapper>
+            <Title>{exercise.title}</Title>
+            <Text>{exercise.instructions}</Text>
+            <Text>Difficulty: {exercise.difficultyLevel}</Text>
+          </CardContentWrapper>
+        </StyledCard>
+      ))}
+    </Root>
   );
 };
 

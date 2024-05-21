@@ -13,7 +13,7 @@ const HeroBanner = () => {
           top: "45%",
           left: "50%",
           transform: "translate(-50%, -50%)",
-          zIndex: 2,
+          zIndex: 67,
         }}
         textAlign="center"
       >
@@ -67,7 +67,8 @@ const HeroBanner = () => {
           backgroundColor: "rgba(0, 0, 0, 0.321)",
           width: "100%",
           height: "100%",
-          position: "relative",
+          position: "absolute",
+          zIndex: 10,
         }}
       ></Box>
     </Box>
