@@ -19,7 +19,7 @@ const Navbar = () => {
     gsap.from(".logo", {
       y: -150,
       duration: 1,
-      delay: 0.5,
+      delay: 1,
       opacity: 0,
     });
     gsap.from(".overlay", {
