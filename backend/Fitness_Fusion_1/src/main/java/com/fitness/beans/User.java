@@ -9,8 +9,8 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "user_details")
-public class User {
-    @Id
+public class User{
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer user_id;
     @Column(name = "username", nullable = false)
@@ -27,11 +27,19 @@ public class User {
     private char premium = '0';
     @Column(name = "otp")
     private String otp;
+    @Column(name = "role")
+    private String role;
 	public Integer getUser_id() {
 		return user_id;
 	}
 	public void setUser_id(Integer user_id) {
 		this.user_id = user_id;
+	}
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
 	}
 	public String getUsername() {
 		return username;
