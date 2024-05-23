@@ -10,7 +10,6 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Login from "./pages/Login";
 import DifficultyBasedExercises from "./components/DifficultyBasedExercises";
-import CardComponent from "./components/CardComponent";
 import "./App.css";
 
 const App = () => {
@@ -21,7 +20,7 @@ const App = () => {
   const isIntermediate = location.pathname === "/intermediate";
   const isBeginner = location.pathname === "/beginner";
 
-  const shouldShowNavbar = !isLoginRoute && !isExerciseDetailRoute;
+  const shouldShowNavbar = !isLoginRoute;
   const shouldShowFooter =
     !isLoginRoute &&
     !isBeginner &&
@@ -53,7 +52,6 @@ const App = () => {
           <Route path="/cart/:id" element={<ShopCart />} />
           <Route path="/Login" element={<Login />} />
           <Route path="/exercises" element={<DifficultyBasedExercises />} />
-          <Route path="/CardComponent" element={<CardComponent />} />
         </Routes>
       </Box>
       {shouldShowFooter && <Footer />}

@@ -1,6 +1,9 @@
 package com.fitness.controller;
 
 
+import java.util.Base64;
+import java.util.Collections;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,17 +32,25 @@ public class UserController {
     @Autowired
     private MailService mailService;
 
-    //Sign in
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody User user) {
         User existingUser = userService.findByEmail(user.getEmail());
         if (existingUser != null && existingUser.getPassword().equals(user.getPassword())) {
-            return ResponseEntity.ok("Login successful");
+            String token = generateFakeJWT(user); // Replace with actual JWT generation
+            return ResponseEntity.ok().body(Collections.singletonMap("token", token));
         } else {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid email or password");
         }
     }
-    
+
+    private String generateFakeJWT(User user) {
+        // Generate a fake JWT for the purpose of this example
+        String header = Base64.getEncoder().encodeToString("{\"alg\":\"HS256\",\"typ\":\"JWT\"}".getBytes());
+        String payload = Base64.getEncoder().encodeToString(("{\"sub\":\"" + user.getUser_id() + "\",\"name\":\"" + user.getUsername() + "\",\"iat\":" + System.currentTimeMillis() / 1000 + "}").getBytes());
+        String signature = "fake_signature";
+        return header + "." + payload + "." + signature;
+    }
+
     //Sign up
     @PostMapping("/save")
     public ResponseEntity<?> saveUser(@RequestBody User user) {

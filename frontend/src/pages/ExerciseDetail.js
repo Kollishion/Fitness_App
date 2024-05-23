@@ -25,7 +25,11 @@ const ImageBox = styled(Box)({
 
 const ExerciseDetail = () => {
   return (
-    <Grid container direction="column" style={{ height: "180vh" }}>
+    <Grid
+      container
+      direction="column"
+      style={{ height: "180vh", marginTop: "15vh" }}
+    >
       <Link to="/beginner" style={{ textDecoration: "none" }}>
         <StyledGrid item>
           <ImageBox component="img" src={beginner} alt="Beginner" />
