@@ -21,7 +21,6 @@ const Video_animation = forwardRef((_, ref) => {
           start: "top 90%", // Start the animation when the top of the video is at the center of the viewport
           end: "bottom 60%", // End the animation when the bottom of the video is at the top of the viewport
           scrub: 3, // Smooth scrolling effect
-          markers: true, // Markers for debugging
           once: true,
         },
       }

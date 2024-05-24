@@ -1,9 +1,10 @@
 package com.fitness.controller;
 
-
 import java.util.Base64;
 import java.util.Collections;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,6 +28,8 @@ import com.fitness.service.UserService;
 @CrossOrigin(origins = "http://localhost:3000")
 public class UserController {
 
+    private static final Logger logger = LoggerFactory.getLogger(UserController.class);
+
     @Autowired
     private UserService userService;
     @Autowired
@@ -34,12 +37,17 @@ public class UserController {
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody User user) {
-        User existingUser = userService.findByEmail(user.getEmail());
-        if (existingUser != null && existingUser.getPassword().equals(user.getPassword())) {
-            String token = generateFakeJWT(user); // Replace with actual JWT generation
-            return ResponseEntity.ok().body(Collections.singletonMap("token", token));
-        } else {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid email or password");
+        try {
+            User existingUser = userService.findByEmail(user.getEmail());
+            if (existingUser != null && existingUser.getPassword().equals(user.getPassword())) {
+                String token = generateFakeJWT(user); // Replace with actual JWT generation
+                return ResponseEntity.ok().body(Collections.singletonMap("token", token));
+            } else {
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid email or password");
+            }
+        } catch (Exception e) {
+            logger.error("Login error: ", e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Login error: " + e.getMessage());
         }
     }
 
@@ -51,25 +59,26 @@ public class UserController {
         return header + "." + payload + "." + signature;
     }
 
-    //Sign up
     @PostMapping("/save")
     public ResponseEntity<?> saveUser(@RequestBody User user) {
         try {
             User savedUser = userService.save(user);
             return ResponseEntity.status(HttpStatus.CREATED).body(savedUser);
         } catch (Exception e) {
+            logger.error("Error saving user: ", e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error saving user: " + e.getMessage());
         }
     }
     
-    //Sending Mail
+    // Sending Mail
     @PostMapping("/sendMail")
     public ResponseEntity<String> sendMail(@RequestBody EmailRequest emailRequest) {
-        String response = mailService.sendMail(emailRequest.getTo(), emailRequest.getSubject(), emailRequest.getText());
-        if ("Mail sent successfully".equals(response)) {
+        try {
+            String response = mailService.sendMail(emailRequest.getTo(), emailRequest.getSubject(), emailRequest.getText());
             return ResponseEntity.ok(response);
-        } else {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+        } catch (Exception e) {
+            logger.error("Error sending mail: ", e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error sending mail: " + e.getMessage());
         }
     }
 
@@ -84,6 +93,7 @@ public class UserController {
             String response = userService.generateAndSendOtp(email);
             return ResponseEntity.ok(response);
         } catch (MessagingException e) {
+            logger.error("Error sending OTP: ", e);
             return ResponseEntity.status(500).body("Error sending OTP: " + e.getMessage());
         }
     }
@@ -97,4 +107,4 @@ public class UserController {
             return ResponseEntity.status(400).body("Invalid OTP");
         }
     }
-} 
+}

@@ -1,5 +1,7 @@
 package com.fitness.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,8 +12,9 @@ import com.fitness.security.OTPGenerator;
 import jakarta.mail.MessagingException;
 
 @Service
-public class UserService 
-{
+public class UserService {
+
+    private static final Logger logger = LoggerFactory.getLogger(UserService.class);
 
     @Autowired
     private UserRepository userRepository;
@@ -23,7 +26,15 @@ public class UserService
         return userRepository.findByEmail(email);
     }
 
-    public User save(User user) {
+    public User save(User user) throws Exception {
+        // Validate user input if necessary
+        if (user.getEmail() == null || user.getPassword() == null) {
+            throw new Exception("Email and Password are required");
+        }
+        // Ensure email is unique
+        if (userRepository.findByEmail(user.getEmail()) != null) {
+            throw new Exception("Email already exists");
+        }
         return userRepository.save(user);
     }
     
