@@ -27,19 +27,11 @@ public class User{
     private char premium = '0';
     @Column(name = "otp")
     private String otp;
-    @Column(name = "role")
-    private String role;
 	public Integer getUser_id() {
 		return user_id;
 	}
 	public void setUser_id(Integer user_id) {
 		this.user_id = user_id;
-	}
-	public String getRole() {
-		return role;
-	}
-	public void setRole(String role) {
-		this.role = role;
 	}
 	public String getUsername() {
 		return username;

@@ -51,6 +51,7 @@ public class UserController {
         }
     }
 
+
     private String generateFakeJWT(User user) {
         // Generate a fake JWT for the purpose of this example
         String header = Base64.getEncoder().encodeToString("{\"alg\":\"HS256\",\"typ\":\"JWT\"}".getBytes());
