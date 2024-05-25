@@ -50,10 +50,7 @@ const App = () => {
             element={<DifficultyBasedExercises difficultyLevel="2" />}
           />
           <Route path="/cart/:id" element={<ShopCart />} />
-          <Route
-            path="/Login"
-            element={<Login setIsLoggedIn={setIsLoggedIn} />}
-          />
+          <Route path="/Login" element={<Login />} />
         </Routes>
       </Box>
       {shouldShowFooter && <Footer />}
