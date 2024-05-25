@@ -1,68 +1,86 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
+import "../stylesheets/testimonials.css";
 
-const REVIEWS = [
-  // Your reviews data here...
-];
+// Individual Testimonial Component
+const Testimonial = ({ testimonialText, userImage, username, role }) => {
+  return (
+    <div className="testimonial-container">
+      <div className="progress-bar"></div>
+      <div className="fas fa-quote-right fa-quote"></div>
+      <div className="fas fa-quote-left fa-quote"></div>
+      <p className="testimonial">{testimonialText}</p>
+      <div className="user">
+        <img src={userImage} alt="user" className="user-image" />
+        <div className="user-details">
+          <h4 className="username">{username}</h4>
+          <p className="role">{role}</p>
+        </div>
+      </div>
+    </div>
+  );
+};
 
+Testimonial.propTypes = {
+  testimonialText: PropTypes.string.isRequired,
+  userImage: PropTypes.string.isRequired,
+  username: PropTypes.string.isRequired,
+  role: PropTypes.string.isRequired,
+};
+
+// Main Testimonials Component
 const Testimonials = () => {
-  const [currentIdx, setCurrentIdx] = useState(0);
+  const testimonials = [
+    {
+      testimonialText:
+        "The eCommerce functionality of this fitness app is top-notch! I can easily buy all my fitness gear and supplements in one place. Highly recommend!",
+      userImage: "https://randomuser.me/api/portraits/women/46.jpg",
+      username: "Lola Smith",
+      role: "Marketing Specialist",
+    },
+    {
+      testimonialText:
+        "This app has completely changed the way I approach my fitness routine. The workout plans are comprehensive and easy to follow. Great job!",
+      userImage: "https://randomuser.me/api/portraits/men/45.jpg",
+      username: "John Doe",
+      role: "Fitness Enthusiast",
+    },
+    {
+      testimonialText:
+        "As a fitness trainer, I appreciate the detailed workout plans provided by this app. It makes it easy for me to guide my clients. Plus, the eCommerce feature is a huge plus!",
+      userImage: "https://randomuser.me/api/portraits/men/55.jpg",
+      username: "Alex Johnson",
+      role: "Personal Trainer",
+    },
+    {
+      testimonialText:
+        "I love how I can shop for fitness equipment and supplements directly within the app. It saves me so much time and effort. Highly recommend this app to everyone!",
+      userImage: "https://randomuser.me/api/portraits/women/65.jpg",
+      username: "Emily Clark",
+      role: "Gym Owner",
+    },
+  ];
 
-  const handleSlide = (direction) => {
-    if (direction === "prev") {
-      setCurrentIdx(
-        (prevIdx) => (prevIdx - 1 + REVIEWS.length) % REVIEWS.length
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) =>
+        prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
       );
-    } else {
-      setCurrentIdx((prevIdx) => (prevIdx + 1) % REVIEWS.length);
-    }
-  };
+    }, 8000);
+
+    return () => clearInterval(interval);
+  }, [testimonials.length]);
 
   return (
-    <div className="bg-gradient-to-tr from-slate-200 to-slate-50 text-slate-800 flex flex-col justify-center items-center min-h-screen relative px-4">
-      <main className="bg-white my-4 w-full max-w-2xl rounded-3xl text-center p-8 sm:p-16">
-        <h1 className="text-xl font-bold">A word from our customers</h1>
-        <p className="text-sm">
-          We've been helping businesses do their best since 2018
-        </p>
-
-        <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-6">
-          <button
-            onClick={() => handleSlide("prev")}
-            className="material-symbols-outlined w-10 h-10 rounded-full text-gray-600 text-2xl transition-all duration-500"
-          >
-            navigate_before
-          </button>
-
-          {REVIEWS.map((review, idx) => (
-            <div
-              key={review.id}
-              className={`card ${idx === currentIdx ? "" : "opacity-0"}`}
-            >
-              <blockquote className="bg-black text-white rounded-md p-6 text-sm transition-all duration-500">
-                "{review.review}"
-              </blockquote>
-              <div className="details text-sm translate-y-[150px] transition-all duration-500 flex flex-col items-center gap-2 mt-6">
-                <img
-                  src={review.avatar}
-                  alt=""
-                  className="w-16 h-16 object-cover rounded-full"
-                />
-                <div>
-                  <p className="text-sm font-bold">{review.name}</p>
-                  <p className="text-xs">{review.role}</p>
-                </div>
-              </div>
-            </div>
-          ))}
-
-          <button
-            onClick={() => handleSlide("next")}
-            className="material-symbols-outlined w-10 h-10 rounded-full text-gray-600 text-2xl transition-all duration-500"
-          >
-            navigate_next
-          </button>
-        </div>
-      </main>
+    <div className="testimonial-wrapper">
+      <Testimonial
+        testimonialText={testimonials[currentIndex].testimonialText}
+        userImage={testimonials[currentIndex].userImage}
+        username={testimonials[currentIndex].username}
+        role={testimonials[currentIndex].role}
+      />
     </div>
   );
 };

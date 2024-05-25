@@ -83,9 +83,9 @@ const Navbar = () => {
             padding: "2px 18px",
             borderRadius: "5px",
             cursor: "pointer",
-            transition: "all 0.3s", // Smooth transition for hover effects
+            transition: "all 0.3s",
             "&:hover": {
-              backgroundColor: "#E24A40", // Change color on hover
+              backgroundColor: "#E24A40",
             },
           }}
         >
@@ -104,7 +104,7 @@ const Navbar = () => {
             backgroundColor: "white",
             borderRadius: "30%",
             "&:hover": {
-              backgroundColor: "antiquewhite", // Change color on hover
+              backgroundColor: "antiquewhite",
             },
           }}
         >

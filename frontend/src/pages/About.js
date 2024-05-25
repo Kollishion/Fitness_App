@@ -59,7 +59,7 @@ function About() {
             starting point. Learn proper form, build foundational strength, and
             ease your way into an exercise routine.
           </p>
-          <i>Intermediate:</i>
+          <i>Intermediate (Premium Membership):</i>
           <p>
             Take your workouts to the next level with our intermediate programs.
             These routines challenge you further, helping you build muscle,

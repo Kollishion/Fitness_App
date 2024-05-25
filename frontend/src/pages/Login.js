@@ -40,7 +40,7 @@ const LoginForm = () => {
         email,
         password,
       });
-      localStorage.setItem("authToken", response.data.token); // Adjust this based on actual response structure
+      localStorage.setItem("authToken", response.data.token);
       setIsLoggedIn(true);
       setErrorMessage("");
     } catch (error) {

@@ -1,5 +1,5 @@
-import React from "react";
-import { Route, Routes, useLocation } from "react-router-dom";
+import React, { useState } from "react";
+import { Route, Routes, useLocation, Navigate } from "react-router-dom";
 import { Box } from "@mui/material";
 import ExerciseDetail from "./pages/ExerciseDetail";
 import Home from "./pages/Home";
@@ -50,8 +50,10 @@ const App = () => {
             element={<DifficultyBasedExercises difficultyLevel="2" />}
           />
           <Route path="/cart/:id" element={<ShopCart />} />
-          <Route path="/Login" element={<Login />} />
-          <Route path="/exercises" element={<DifficultyBasedExercises />} />
+          <Route
+            path="/Login"
+            element={<Login setIsLoggedIn={setIsLoggedIn} />}
+          />
         </Routes>
       </Box>
       {shouldShowFooter && <Footer />}
