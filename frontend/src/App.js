@@ -11,6 +11,7 @@ import Contact from "./pages/Contact";
 import Login from "./pages/Login";
 import DifficultyBasedExercises from "./components/DifficultyBasedExercises";
 import "./App.css";
+import Workout from "./components/Workout";
 
 const App = () => {
   const location = useLocation();
@@ -51,6 +52,7 @@ const App = () => {
           />
           <Route path="/cart/:id" element={<ShopCart />} />
           <Route path="/Login" element={<Login />} />
+          <Route path="/Workout" element={<Workout />} />
         </Routes>
       </Box>
       {shouldShowFooter && <Footer />}

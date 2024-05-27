@@ -23,7 +23,18 @@ public class User{
     private String security_question;
     @Column(name = "answer", nullable = false)
     private String answer;
-    @Column(name = "premium", columnDefinition = "char(1) default '0'")
+    @Column(name = "phoneNumber", nullable = false)
+    private Integer phoneNumber;
+    public Integer getPhoneNumber() {
+		return phoneNumber;
+	}
+	public void setPhoneNumber(Integer phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+	public void setSecurity_question(String security_question) {
+		this.security_question = security_question;
+	}
+	@Column(name = "premium", columnDefinition = "char(1) default '0'")
     private char premium = '0';
     @Column(name = "otp")
     private String otp;

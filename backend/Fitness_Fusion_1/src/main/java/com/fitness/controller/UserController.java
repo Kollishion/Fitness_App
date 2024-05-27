@@ -39,17 +39,51 @@ public class UserController {
     public ResponseEntity<?> login(@RequestBody User user) {
         try {
             User existingUser = userService.findByEmail(user.getEmail());
-            if (existingUser != null && existingUser.getPassword().equals(user.getPassword())) {
+            if (existingUser != null && existingUser.getPassword().equals(user.getPassword()) 
+                    && existingUser.getAnswer().equals(user.getAnswer())) { // Validate the security answer
                 String token = generateFakeJWT(user); // Replace with actual JWT generation
                 return ResponseEntity.ok().body(Collections.singletonMap("token", token));
             } else {
-                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid email or password");
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid email, password, or security answer");
             }
         } catch (Exception e) {
             logger.error("Login error: ", e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Login error: " + e.getMessage());
         }
     }
+
+
+    @GetMapping("/security-question")
+    public ResponseEntity<?> getSecurityQuestion(@RequestParam String email) {
+        try {
+            User user = userService.findByEmail(email); 
+            if (user != null) {
+                return ResponseEntity.ok(Collections.singletonMap("security_question", user.getSecurity_question()));
+            } else {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
+            }
+        } catch (Exception e) {
+            logger.error("Error fetching security question: ", e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error fetching security question: " + e.getMessage());
+        }
+    }
+
+    @PostMapping("/validate-security-answer")
+    public ResponseEntity<?> validateSecurityAnswer(@RequestBody User user) {
+        try {
+            User existingUser = userService.findByEmail(user.getEmail());
+            if (existingUser != null && existingUser.getAnswer().equals(user.getAnswer())) {
+                // If valid, proceed with password reset
+                return ResponseEntity.ok().body("Security answer validated. Proceed to reset password.");
+            } else {
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid security answer");
+            }
+        } catch (Exception e) {
+            logger.error("Validation error: ", e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Validation error: " + e.getMessage());
+        }
+    }
+
 
 
     private String generateFakeJWT(User user) {

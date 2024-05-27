@@ -1,0 +1,176 @@
+.Workout_Parent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #393e46;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.Workout_Container {
+  padding-block: min(20vh, 2rem);
+  width: calc(min(76.5rem, 90%));
+  margin-inline: auto;
+  color: #111;
+}
+
+.Workout_Container h2 {
+  text-transform: capitalize;
+  letter-spacing: 0.025em;
+  font-size: clamp(2rem, 1.8125rem + 0.75vw, 2.6rem);
+}
+
+.Workout_Container a {
+  display: inline-block;
+  text-decoration: none;
+}
+
+.Workout_Container .container {
+  margin-top: 5em;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 2rem;
+}
+
+.Workout_Container .container .card:nth-child(1) .box .icon .iconBox {
+  background: rgb(197, 197, 17);
+}
+
+.Workout_Container .container .card:nth-child(2) .box .icon .iconBox {
+  background: #ffa500;
+}
+
+.Workout_Container .container .card:nth-child(3) .box .icon .iconBox {
+  background: red;
+}
+
+.Workout_Container .container .card ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.625rem;
+}
+
+.Workout_Container .container .card ul li {
+  text-transform: uppercase;
+  background: var(--clr-tag);
+  color: #282828;
+  font-weight: 700;
+  font-size: 0.8rem;
+  padding: 0.375rem 0.625rem;
+  border-radius: 0.188rem;
+}
+
+.Workout_Container .container .card ul .branding {
+  color: antiquewhite;
+}
+
+.Workout_Container .container .card ul .packaging {
+  color: antiquewhite;
+}
+
+.Workout_Container .container .card ul .marketing {
+  color: antiquewhite;
+}
+
+.Workout_Container .container .card .content {
+  padding: 0.938rem 0.625rem;
+}
+
+.Workout_Container .container .card .content h3 {
+  text-transform: capitalize;
+  font-size: clamp(1.5rem, 1.3909rem + 0.4364vw, 1.8rem);
+}
+
+.Workout_Container .container .card .content p {
+  margin: 0.625rem 0 1.25rem;
+  color: #565656;
+}
+
+.Workout_Container .container .card-inner {
+  position: relative;
+  width: inherit;
+  height: 18.75rem;
+  background: var(--clr);
+  border-radius: 1.25rem;
+  border-bottom-right-radius: 0;
+  overflow: hidden;
+}
+
+.Workout_Container .container .card-inner .box {
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  border-radius: 1.25rem;
+  overflow: hidden;
+}
+
+.Workout_Container .container .card-inner .box .imgBox {
+  position: absolute;
+  inset: 0;
+}
+
+.Workout_Container .container .card-inner .box .imgBox img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.Workout_Container .container .card-inner .box .icon {
+  position: absolute;
+  bottom: -0.375rem;
+  right: -0.375rem;
+  width: 6rem;
+  height: 6rem;
+  background: var(--clr);
+  border-top-left-radius: 50%;
+}
+
+.Workout_Container .container .card-inner .box .icon:hover .iconBox {
+  transform: scale(1.1);
+}
+
+.Workout_Container .container .card-inner .box .icon::before {
+  position: absolute;
+  content: "";
+  bottom: 0.375rem;
+  left: -1.25rem;
+  background: transparent;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-bottom-right-radius: 1.25rem;
+  box-shadow: 0.313rem 0.313rem 0 0.313rem #fff;
+}
+
+.Workout_Container .container .card-inner .box .icon::after {
+  position: absolute;
+  content: "";
+  top: -1.25rem;
+  right: 0.375rem;
+  background: transparent;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-bottom-right-radius: 1.25rem;
+  box-shadow: 0.313rem 0.313rem 0 0.313rem var(--clr);
+}
+
+.Workout_Container .container .card-inner .box .icon .iconBox {
+  position: absolute;
+  inset: 0.625rem;
+  background: #282828;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s;
+}
+
+.Workout_Container .container .card-inner .box .icon .iconBox span {
+  color: #fff;
+  font-size: 1.5rem;
+}
