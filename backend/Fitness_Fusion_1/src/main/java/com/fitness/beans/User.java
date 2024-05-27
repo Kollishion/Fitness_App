@@ -19,16 +19,16 @@ public class User{
     private String password;
     @Column(name = "email", nullable = false)
     private String email;
-    @Column(name = "security_question", nullable = false)
+    @Column(name = "security_question")
     private String security_question;
     @Column(name = "answer", nullable = false)
     private String answer;
     @Column(name = "phoneNumber", nullable = false)
-    private Integer phoneNumber;
-    public Integer getPhoneNumber() {
+    private Long phoneNumber;
+    public Long getPhoneNumber() {
 		return phoneNumber;
 	}
-	public void setPhoneNumber(Integer phoneNumber) {
+	public void setPhoneNumber(Long phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 	public void setSecurity_question(String security_question) {

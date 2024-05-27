@@ -40,6 +40,16 @@ const LoginForm = () => {
     }
   };
 
+  const handleLoginSuccess = () => {
+    setIsLoggedIn(true);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("authToken");
+    setIsLoggedIn(false);
+    navigate("/login");
+  };
+
   const fetchSecurityQuestion = async () => {
     try {
       const response = await axios.get(
@@ -65,7 +75,7 @@ const LoginForm = () => {
       localStorage.setItem("authToken", response.data.token);
       setIsLoggedIn(true);
       setErrorMessage("");
-      navigate("/dashboard");
+      navigate("/");
     } catch (error) {
       setErrorMessage("Invalid email or password");
     }
@@ -122,7 +132,8 @@ const LoginForm = () => {
         username: registerData.username,
         email: registerData.email,
         password: registerData.password,
-        role: registerData.role,
+        answer: registerData.answer, // Add the security answer to the payload
+        phoneNumber: registerData.phoneNumber, // Add the phone number to the payload
       });
       if (response.status === 201) {
         setAction("");
@@ -149,172 +160,181 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="login_container">
-      <div className={`wrapper${action}`}>
-        <div className="form-box login">
-          {showForgotPassword ? (
-            <form className="login_form" onSubmit={handleForgotPassword}>
-              <h1>Forgot Password</h1>
-              <div className="input-box">
-                <input
-                  type="text"
-                  placeholder="Email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                />
-                <FaUser className="icon" />
-              </div>
-              <div className="input-box">
-                {securityQuestion && (
-                  <>
-                    <label>{securityQuestion}</label>
+    <>
+      {isLoggedIn ? (
+        <div>
+          <p>Welcome, User!</p>
+          <button onClick={handleLogout}>Logout</button>
+        </div>
+      ) : (
+        <div className="login_container">
+          <div className={`wrapper${action}`}>
+            <div className="form-box login">
+              {showForgotPassword ? (
+                <form className="login_form" onSubmit={handleForgotPassword}>
+                  <h1>Forgot Password</h1>
+                  <div className="input-box">
                     <input
                       type="text"
-                      placeholder="Answer"
-                      value={securityAnswer}
-                      onChange={(e) => setSecurityAnswer(e.target.value)}
+                      placeholder="Email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
                       required
                     />
-                  </>
-                )}
-              </div>
-              <button type="submit">Submit</button>
-              {errorMessage && <p className="error">{errorMessage}</p>}
-            </form>
-          ) : (
-            <form className="login_form" onSubmit={handleLogin}>
-              <h1>Ready To Gain?</h1>
-              <div className="input-box">
-                <input
-                  type="text"
-                  placeholder="Email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                />
-                <FaUser className="icon" />
-              </div>
-              <div className="input-box">
-                <input
-                  type="password"
-                  placeholder="Password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                />
-                <BiSolidLockAlt className="icon " />
-              </div>
-              <div className="remember-forgot">
-                <label>
-                  <input type="checkbox" />
-                  Remember me
-                </label>
-                <a href="#" onClick={handleForgotPasswordClick}>
-                  Forgot Password?
-                </a>
-              </div>
-              <button type="submit">Login</button>
-              {errorMessage && <p className="error">{errorMessage}</p>}
-              <div className="register-link">
-                <p>
-                  Don't have an account?{" "}
-                  <a href="#" onClick={registerLink}>
-                    Register
-                  </a>
-                </p>
-              </div>
-            </form>
-          )}
+                    <FaUser className="icon" />
+                  </div>
+                  <div className="input-box">
+                    {securityQuestion && (
+                      <>
+                        <label>{securityQuestion}</label>
+                        <input
+                          type="text"
+                          placeholder="Answer"
+                          value={securityAnswer}
+                          onChange={(e) => setSecurityAnswer(e.target.value)}
+                          required
+                        />
+                      </>
+                    )}
+                  </div>
+                  <button type="submit">Submit</button>
+                  {errorMessage && <p className="error">{errorMessage}</p>}
+                </form>
+              ) : (
+                <form className="login_form" onSubmit={handleLogin}>
+                  <h1>Ready To Gain?</h1>
+                  <div className="input-box">
+                    <input
+                      type="text"
+                      placeholder="Email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      required
+                    />
+                    <FaUser className="icon" />
+                  </div>
+                  <div className="input-box">
+                    <input
+                      type="password"
+                      placeholder="Password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      required
+                    />
+                    <BiSolidLockAlt className="icon " />
+                  </div>
+                  <div className="remember-forgot">
+                    <label>
+                      <input type="checkbox" />
+                      Remember me
+                    </label>
+                    <a href="#" onClick={handleForgotPasswordClick}>
+                      Forgot Password?
+                    </a>
+                  </div>
+                  <button type="submit">Login</button>
+                  {errorMessage && <p className="error">{errorMessage}</p>}
+                  <div className="register-link">
+                    <p>
+                      Don't have an account?{" "}
+                      <a href="#" onClick={registerLink}>
+                        Register
+                      </a>
+                    </p>
+                  </div>
+                </form>
+              )}
+            </div>
+            <div className="form-box register">
+              <form className="login_form" onSubmit={handleRegister}>
+                <h1>Ready To Join?</h1>
+                <div className="input-box">
+                  <input
+                    type="text"
+                    placeholder="Username"
+                    name="username"
+                    value={registerData.username}
+                    onChange={handleRegisterChange}
+                    required
+                  />
+                  <FaUser className="icon" />
+                </div>
+                <div className="input-box">
+                  <input
+                    type="email"
+                    placeholder="Email"
+                    name="email"
+                    value={registerData.email}
+                    onChange={handleRegisterChange}
+                    required
+                  />
+                  <FaUser className="icon" />
+                </div>
+                <div className="input-box">
+                  <input
+                    type="password"
+                    placeholder="Password"
+                    name="password"
+                    value={registerData.password}
+                    onChange={handleRegisterChange}
+                    required
+                  />
+                  <BiSolidLockAlt className="icon " />
+                </div>
+                <div className="input-box">
+                  <input
+                    type="password"
+                    placeholder="Confirm Password"
+                    name="confirmPassword"
+                    value={registerData.confirmPassword}
+                    onChange={handleRegisterChange}
+                    required
+                  />
+                  <BiSolidLockAlt className="icon " />
+                </div>
+                <div className="input-box">
+                  <input
+                    type="text"
+                    placeholder="What is your pet's name?"
+                    name="answer"
+                    value={registerData.answer}
+                    onChange={handleRegisterChange}
+                    required
+                  />
+                  <BiSolidLockAlt className="icon " />
+                </div>
+                <div className="input-box">
+                  <input
+                    type="text"
+                    placeholder="Your Phone Number"
+                    name="phoneNumber"
+                    value={registerData.phoneNumber}
+                    onChange={handleRegisterChange}
+                    required
+                  />
+                  <FaPhoneAlt className="icon" />
+                </div>
+                <div className="remember-forgot">
+                  <label>
+                    <input type="checkbox" />I agree to the terms & conditions
+                  </label>
+                </div>
+                <button type="submit">Register</button>
+                {registerError && <p className="error">{registerError}</p>}
+                <div className="register-link">
+                  <p>
+                    Already have an account?{" "}
+                    <a href="#" onClick={loginLink}>
+                      Login
+                    </a>
+                  </p>
+                </div>
+              </form>
+            </div>
+          </div>
         </div>
-        <div className="form-box register">
-          <form className="login_form" onSubmit={handleRegister}>
-            <h1>Ready To Join?</h1>
-            <div className="input-box">
-              <input
-                type="text"
-                placeholder="Username"
-                name="username"
-                value={registerData.username}
-                onChange={handleRegisterChange}
-                required
-              />
-              <FaUser className="icon" />
-            </div>
-            <div className="input-box">
-              <input
-                type="email"
-                placeholder="Email"
-                name="email"
-                value={registerData.email}
-                onChange={handleRegisterChange}
-                required
-              />
-              <FaUser className="icon" />
-            </div>
-            <div className="input-box">
-              <input
-                type="password"
-                placeholder="Password"
-                name="password"
-                value={registerData.password}
-                onChange={handleRegisterChange}
-                required
-              />
-              <BiSolidLockAlt className="icon " />
-            </div>
-            <div className="input-box">
-              <input
-                type="password"
-                placeholder="Confirm Password"
-                name="confirmPassword"
-                value={registerData.confirmPassword}
-                onChange={handleRegisterChange}
-                required
-              />
-              <BiSolidLockAlt className="icon " />
-            </div>
-            <div className="input-box">
-              <input
-                type="text"
-                placeholder="What is your pet's name?"
-                name="answer"
-                value={registerData.answer}
-                onChange={handleRegisterChange}
-                required
-              />
-              <BiSolidLockAlt className="icon " />
-            </div>
-            <div className="input-box">
-              <input
-                type="text"
-                placeholder="Your Phone Number"
-                name="phoneNumber"
-                value={registerData.phoneNumber}
-                onChange={handleRegisterChange}
-                required
-              />
-              <FaPhoneAlt className="icon" />
-            </div>
-            <div className="remember-forgot">
-              <label>
-                <input type="checkbox" />I agree to the terms & conditions
-              </label>
-            </div>
-            <button type="submit">Register</button>
-            {registerError && <p className="error">{registerError}</p>}
-            <div className="register-link">
-              <p>
-                Already have an account?{" "}
-                <a href="#" onClick={loginLink}>
-                  Login
-                </a>
-              </p>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
+      )}
+    </>
   );
 };
 

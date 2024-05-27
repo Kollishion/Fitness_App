@@ -37,7 +37,7 @@ The Fitness App provides users with a platform to log workouts, set fitness goal
 ### Cloning the Repository
 
 ```bash
-git clone https://github.com/your-username/fitness-app.git
+git clone https://github.com/your-username/Fitness-App.git
 cd fitness-app
 ```
 

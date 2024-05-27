@@ -2,6 +2,7 @@ package com.fitness.controller;
 
 import java.util.Base64;
 import java.util.Collections;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import jakarta.mail.MessagingException;
 
 import com.fitness.beans.EmailRequest;
+import com.fitness.beans.Exercise;
 import com.fitness.beans.User;
 import com.fitness.service.MailService;
 import com.fitness.service.UserService;
@@ -34,17 +36,21 @@ public class UserController {
     private UserService userService;
     @Autowired
     private MailService mailService;
+    
+//    @GetMapping(value="/getAll")
+//	public List<User> getAllExercises(){
+//		return userService.getAllUser();
+//	}
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody User user) {
         try {
             User existingUser = userService.findByEmail(user.getEmail());
-            if (existingUser != null && existingUser.getPassword().equals(user.getPassword()) 
-                    && existingUser.getAnswer().equals(user.getAnswer())) { // Validate the security answer
+            if (existingUser != null && existingUser.getPassword().equals(user.getPassword()) ) {
                 String token = generateFakeJWT(user); // Replace with actual JWT generation
                 return ResponseEntity.ok().body(Collections.singletonMap("token", token));
             } else {
-                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid email, password, or security answer");
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid email or password");
             }
         } catch (Exception e) {
             logger.error("Login error: ", e);

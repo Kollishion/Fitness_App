@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Route, Routes, useLocation, Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Box } from "@mui/material";
 import ExerciseDetail from "./pages/ExerciseDetail";
 import Home from "./pages/Home";
@@ -13,7 +14,7 @@ import DifficultyBasedExercises from "./components/DifficultyBasedExercises";
 import "./App.css";
 import Workout from "./components/Workout";
 
-const App = () => {
+const App = ({ isLoggedIn }) => {
   const location = useLocation();
   const isLoginRoute = location.pathname === "/Login";
   const isExerciseDetailRoute = location.pathname === "/exerciseDetail";
@@ -34,7 +35,7 @@ const App = () => {
       {shouldShowNavbar && <Navbar />}
       <Box sx={{ flex: 1 }}>
         <Routes>
-          <Route path="/" element={<Home />} />
+          {!isLoggedIn && <Route path="/" element={<Home />} />}
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/exerciseDetail" element={<ExerciseDetail />} />
