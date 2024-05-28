@@ -59,7 +59,6 @@ const DifficultyBasedExercises = ({ difficultyLevel }) => {
     height: 200,
     display: "grid",
     placeItems: "center",
-    borderRadius: "100% 0 100% 0 / 0 50% 50% 100%",
     backgroundSize: "cover",
     backgroundPosition: "center",
   });

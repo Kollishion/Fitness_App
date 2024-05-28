@@ -7,7 +7,7 @@ import advanced from "../assets/images/advanced.png";
 
 const StyledGrid = styled(Grid)(({ theme }) => ({
   height: "55.5vh",
-  width: "95%",
+  width: "100%",
   margin: "10px auto",
   borderRadius: "20px",
   overflow: "hidden",

@@ -32,7 +32,7 @@ const LoginForm = () => {
   }, []);
 
   const checkLoggedIn = () => {
-    const token = localStorage.getItem("authToken");
+    const token = sessionStorage.getItem("authToken");
     if (token) {
       setIsLoggedIn(true);
     } else {
@@ -45,7 +45,7 @@ const LoginForm = () => {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem("authToken");
+    sessionStorage.removeItem("authToken");
     setIsLoggedIn(false);
     navigate("/login");
   };
@@ -72,7 +72,7 @@ const LoginForm = () => {
         email,
         password,
       });
-      localStorage.setItem("authToken", response.data.token);
+      sessionStorage.setItem("authToken", response.data.token);
       setIsLoggedIn(true);
       setErrorMessage("");
       navigate("/");
