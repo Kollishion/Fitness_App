@@ -5,6 +5,7 @@ import { FaUser } from "react-icons/fa";
 import { BiSolidLockAlt } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 import { FaPhoneAlt } from "react-icons/fa";
+import Logout from "./Logout";
 
 const LoginForm = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -40,14 +41,10 @@ const LoginForm = () => {
     }
   };
 
-  const handleLoginSuccess = () => {
-    setIsLoggedIn(true);
-  };
-
   const handleLogout = () => {
     sessionStorage.removeItem("authToken");
     setIsLoggedIn(false);
-    navigate("/login");
+    navigate("/logout");
   };
 
   const fetchSecurityQuestion = async () => {
@@ -139,7 +136,7 @@ const LoginForm = () => {
         setAction("");
         setRegisterError("");
         setErrorMessage("");
-        navigate("/login"); // Redirect to login after registration
+        navigate("/logout"); // Redirect to login after registration
       }
     } catch (error) {
       setRegisterError("Error registering user: " + error.message);
@@ -162,10 +159,7 @@ const LoginForm = () => {
   return (
     <>
       {isLoggedIn ? (
-        <div>
-          <p>Welcome, User!</p>
-          <button onClick={handleLogout}>Logout</button>
-        </div>
+        <Logout handleLogout={handleLogout} />
       ) : (
         <div className="login_container">
           <div className={`wrapper${action}`}>

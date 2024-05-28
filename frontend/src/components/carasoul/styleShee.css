@@ -1,0 +1,74 @@
+.btn {
+  padding: 3%;
+  background-color: black;
+  box-shadow: 0px 1px 1px black;
+  color: white;
+  width: 50%;
+  border-radius: 0.5rem;
+  border: none;
+}
+
+.btn:hover {
+  background-color: red;
+  color: white;
+}
+
+.imgContainer,
+.imgContainer img {
+  width: 200px;
+  height: 200px;
+  border-radius: 1rem 1rem 0 0;
+  margin: 0;
+  transition: all 0.3s ease;
+}
+
+.cardContent {
+  position: relative;
+  width: 300px;
+  margin: auto;
+  border-radius: 1rem;
+  box-shadow: 1px 10px 20px #999;
+  margin: 2%;
+  background-color: white;
+  text-align: center;
+  overflow: hidden;
+}
+
+.info {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.cardContent:hover .imgContainer img {
+  filter: blur(5px);
+}
+
+.cardContent:hover .info {
+  opacity: 1;
+}
+
+.titlePro {
+  height: 80px;
+}
+
+.priceContainer {
+  font-size: medium;
+  margin: 2%;
+  color: red;
+  font-size: 20px;
+}
+
+.allContainer {
+  padding: 3%;
+}

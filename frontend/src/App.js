@@ -1,6 +1,5 @@
-import React, { useState } from "react";
-import { Route, Routes, useLocation, Navigate } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import React from "react";
+import { Route, Routes, useLocation } from "react-router-dom";
 import { Box } from "@mui/material";
 import ExerciseDetail from "./pages/ExerciseDetail";
 import Home from "./pages/Home";
@@ -13,6 +12,8 @@ import Login from "./pages/Login";
 import DifficultyBasedExercises from "./components/DifficultyBasedExercises";
 import "./App.css";
 import Workout from "./components/Workout";
+import Logout from "./pages/Logout";
+import Details from "./components/details/Details";
 
 const App = ({ isLoggedIn }) => {
   const location = useLocation();
@@ -54,6 +55,8 @@ const App = ({ isLoggedIn }) => {
           <Route path="/cart/:id" element={<ShopCart />} />
           <Route path="/Login" element={<Login />} />
           <Route path="/Workout" element={<Workout />} />
+          <Route path="/logout" element={<Logout />} />
+          <Route path="/details/:id" element={<Details />} />
         </Routes>
       </Box>
       {shouldShowFooter && <Footer />}
