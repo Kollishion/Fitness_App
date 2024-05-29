@@ -12,6 +12,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/reviews")
+@CrossOrigin(origins="http://localhost:3000")
 public class ReviewController {
 
     @Autowired

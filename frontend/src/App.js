@@ -17,6 +17,16 @@ import Details from "./components/details/Details";
 import Beginner_Workout from "./pages/Beginner_Workout";
 import Intermediate_Workout from "./pages/Intermediate_Workout";
 import Advanced_Workout from "./pages/Advanced_Workout";
+import AdminDashboard from "./admin/AdminDashboard";
+import UserData from "./admin/UserData";
+import AdminData from "./admin/AdminData";
+import ProductData from "./admin/ProductData";
+import ExercisePage from "./admin/ExercisePage";
+import ReviewsData from "./admin/ReviewsData";
+import OrderData from "./admin/OrderData";
+import EditProductForm from "./admin/EditProductForm";
+import AddProductForm from "./admin/AddProductForm";
+import Cart from "./components/cart/Cart";
 
 const App = ({ isLoggedIn }) => {
   const [cartCount, setCartCount] = useState(0);
@@ -71,6 +81,18 @@ const App = ({ isLoggedIn }) => {
             element={<Intermediate_Workout />}
           />
           <Route path="/advanced_workout" element={<Advanced_Workout />} />
+          <Route path="/admin" element={<AdminDashboard />} />
+          <Route path="/admin/user-data" element={<UserData />} />
+          <Route path="/admin/admin-data" element={<AdminData />} />
+          <Route path="/admin/reviews-data" element={<ReviewsData />} />
+          <Route path="/admin/order-data" element={<OrderData />} />
+          <Route path="/admin/product-data" element={<ProductData />} />
+          <Route
+            path="/admin/products/edit/:productId"
+            element={<EditProductForm />}
+          />
+          <Route path="/admin/products/add" element={<AddProductForm />} />
+          <Route path="/admin/exercise-data" element={<ExercisePage />} />
         </Routes>
       </Box>
       {shouldShowFooter && <Footer />}

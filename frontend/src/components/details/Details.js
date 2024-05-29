@@ -6,6 +6,32 @@ const Details = ({ setCartCount }) => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
 
+  const handleClick = () => {
+    const userId = "your_user_id"; // Replace 'your_user_id' with the actual user ID
+    const productId = id; // Use the id from useParams
+
+    fetch(`http://localhost:8080/cart/add/${userId}/${productId}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        // Add any additional headers if required
+      },
+      // You can include a body if needed
+      // body: JSON.stringify({ key: value })
+    })
+      .then((response) => {
+        // Handle response
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        setCartCount((prevCount) => prevCount + 1); // Increment cart count on successful response
+      })
+      .catch((error) => {
+        // Handle error
+        console.error("There was a problem with your fetch operation:", error);
+      });
+  };
+
   useEffect(() => {
     window.scrollTo(0, 0); // Ensure the page starts at the top
     fetch(`http://localhost:8080/products/getAll/${id}`)
@@ -16,7 +42,7 @@ const Details = ({ setCartCount }) => {
       );
   }, [id]);
 
-  const ProductDetails = ({ product }) => {
+  const ProductDetails = ({ product, onAddToCart }) => {
     const [index, setIndex] = useState(0);
     const myRef = useRef(null);
 
@@ -79,10 +105,7 @@ const Details = ({ setCartCount }) => {
                   />
                 ))}
             </div>
-            <button
-              className="add-to-cart-button"
-              onClick={() => setCartCount((prevCount) => prevCount + 1)}
-            >
+            <button className="add-to-cart-button" onClick={onAddToCart}>
               Add to Cart
             </button>
           </div>
@@ -93,7 +116,11 @@ const Details = ({ setCartCount }) => {
 
   return (
     <div className="app">
-      {product ? <ProductDetails product={product} /> : <div>Loading...</div>}
+      {product ? (
+        <ProductDetails product={product} onAddToCart={handleClick} />
+      ) : (
+        <div>Loading...</div>
+      )}
     </div>
   );
 };

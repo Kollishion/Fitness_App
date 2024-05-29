@@ -1,0 +1,38 @@
+.exercise-page {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+.btn-dash {
+    background-color: blue;
+    color: white;
+    margin-right: 20px;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .btn-dash:hover {
+    background-color: darkblue;
+  }
+  
+  .imagez{
+    width: 200px;
+  }
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
