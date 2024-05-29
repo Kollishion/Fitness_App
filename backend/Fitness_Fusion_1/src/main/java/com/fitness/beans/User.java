@@ -1,10 +1,13 @@
 package com.fitness.beans;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -19,12 +22,16 @@ public class User{
     private String password;
     @Column(name = "email", nullable = false)
     private String email;
-    @Column(name = "security_question")
+    @Column(name = "security_question", nullable = false)
     private String security_question;
     @Column(name = "answer", nullable = false)
     private String answer;
     @Column(name = "phoneNumber", nullable = false)
     private Long phoneNumber;
+    
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER, optional = true)
+    private UserCart userCart;
+    
     public Long getPhoneNumber() {
 		return phoneNumber;
 	}
@@ -85,5 +92,11 @@ public class User{
 	}
 	public void setOtp(String otp) {
 		this.otp = otp;
+	}
+	public UserCart getUserCart() {
+		return userCart;
+	}
+	public void setUserCart(UserCart userCart) {
+		this.userCart = userCart;
 	}
 }

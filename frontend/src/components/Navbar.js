@@ -10,11 +10,12 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import "../stylesheets/navbar.css";
 
-const Navbar = () => {
+const Navbar = ({ cartCount }) => {
   const [isOpen, setIsOpen] = useState(false);
   const handleClick = () => {
     setIsOpen(!isOpen);
   };
+
   useGSAP(() => {
     gsap.from(".logo", {
       y: -150,
@@ -109,6 +110,16 @@ const Navbar = () => {
           }}
         >
           <CiShoppingCart />
+          <span
+            style={{
+              position: "absolute",
+              bottom: "7px",
+              right: "15px",
+              fontSize: "15px",
+            }}
+          >
+            {cartCount}
+          </span>
         </Button>
         {isOpen ? (
           <MdCancel className="link_bar" onClick={handleClick} />

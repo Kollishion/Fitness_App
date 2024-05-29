@@ -123,8 +123,8 @@
 
 .Workout_Container .container .card-inner .box .icon {
   position: absolute;
-  bottom: 20px;
-  right: 50px;
+  bottom: 0;
+  right: -1px;
   width: 6rem;
   height: 6rem;
   background: var(--clr);

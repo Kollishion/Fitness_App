@@ -12,7 +12,7 @@ import com.fitness.repository.ExerciseRepository;
 public class ExerciseService {
 	@Autowired
 	ExerciseRepository exerciseRepository;
-	public List<Exercise> getAllExercise(){
-		return exerciseRepository.findAll();
-	}
+	public List<Exercise> getAllExercise() {
+        return exerciseRepository.findAllByOrderByDifficultyLevelAsc();
+    }
 }

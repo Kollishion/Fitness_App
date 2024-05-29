@@ -14,8 +14,9 @@ const BackgroundPhoto = styled(Box)({
   height: "100vh",
   width: "100%",
   backgroundImage:
-    "url(https://static.pexels.com/photos/221451/pexels-photo-221451.jpeg)",
+    "url(https://i.pinimg.com/originals/67/9f/52/679f5279b71238c9003e2799b79a3116.gif)",
   backgroundSize: "cover",
+  backgroundPosition: "center"
 });
 
 const Jumbotron = styled(Box)(({ theme }) => ({

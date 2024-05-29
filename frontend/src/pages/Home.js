@@ -3,7 +3,6 @@ import { Box } from "@mui/material";
 import HeroBanner from "../components/HeroBanner";
 import Video_animation from "../components/Video_animation";
 import Testimonials from "../components/Testimonials";
-import Pricing from "../components/Pricing";
 import Item from "../components/carasoul/Item";
 const Home = () => {
   const videoRef = useRef(null);
@@ -14,7 +13,6 @@ const Home = () => {
       <Video_animation ref={videoRef} />
       <Item />
       <Testimonials />
-      <Pricing />
     </Box>
   );
 };

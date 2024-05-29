@@ -1,28 +1,44 @@
-import React, { useEffect, useState } from "react";
+import React, {
+  useState,
+  useEffect,
+  forwardRef,
+  useImperativeHandle,
+} from "react";
 
-const TimerThirty = () => {
-  const [seconds, setSeconds] = useState(30);
+const TimerFifteen = forwardRef((props, ref) => {
+  const [time, setTime] = useState(30);
+  const [isActive, setIsActive] = useState(false);
+
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      setSeconds((prevSeconds) => {
-        if (prevSeconds === 0) {
-          clearInterval(intervalId);
-          return 0;
-        }
-        return prevSeconds - 1;
-      });
-    }, 1000);
-    return () => {
-      clearInterval(intervalId);
-    };
-  }, []);
+    let interval = null;
+    if (isActive && time > 0) {
+      interval = setInterval(() => {
+        setTime((time) => time - 1);
+      }, 1000);
+    } else if (time === 0) {
+      setIsActive(false);
+    }
+    return () => clearInterval(interval);
+  }, [isActive, time]);
+
+  useImperativeHandle(ref, () => ({
+    start() {
+      setIsActive(true);
+    },
+    pause() {
+      setIsActive(false);
+    },
+    reset() {
+      setTime(15);
+      setIsActive(false);
+    },
+  }));
 
   return (
     <div>
-      <h1>Countdown Timer (30 Seconds)</h1>
-      <h2>{seconds}</h2>
+      <div>{time}s</div>
     </div>
   );
-};
+});
 
-export default TimerThirty;
+export default TimerFifteen;

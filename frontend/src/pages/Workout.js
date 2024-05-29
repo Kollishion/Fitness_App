@@ -32,11 +32,6 @@ const Workout = () => {
                 For people just starting out <br />
                 <span>(Recomended for most people)</span>
               </p>
-              <ul>
-                <li className="branding" style={{ "--clr-tag": "#84CC16" }}>
-                  Free
-                </li>
-              </ul>
             </div>
           </div>
           <div className="card">
@@ -60,11 +55,6 @@ const Workout = () => {
                 For individuals with decent workout experience and ready to take
                 the next step
               </p>
-              <ul>
-                <li className="branding" style={{ "--clr-tag": "#FF3131" }}>
-                  Premium Only
-                </li>
-              </ul>
             </div>
           </div>
           <div className="card">
@@ -87,11 +77,6 @@ const Workout = () => {
               <p>
                 For hardcore workout enthusiasts and individuals with experience
               </p>
-              <ul>
-                <li className="packaging" style={{ "--clr-tag": "#FF3131" }}>
-                  Premium Only
-                </li>
-              </ul>
             </div>
           </div>
         </div>

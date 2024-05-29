@@ -20,8 +20,8 @@ import org.springframework.web.bind.annotation.RestController;
 import jakarta.mail.MessagingException;
 
 import com.fitness.beans.EmailRequest;
-import com.fitness.beans.Exercise;
 import com.fitness.beans.User;
+import com.fitness.beans.UserCart;
 import com.fitness.service.MailService;
 import com.fitness.service.UserService;
 
@@ -37,10 +37,10 @@ public class UserController {
     @Autowired
     private MailService mailService;
     
-//    @GetMapping(value="/getAll")
-//	public List<User> getAllExercises(){
-//		return userService.getAllUser();
-//	}
+    @GetMapping(value="/getAll")
+	public List<User> getAllExercises(){
+		return userService.getAllUser();
+	}
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody User user) {
@@ -103,6 +103,10 @@ public class UserController {
     @PostMapping("/save")
     public ResponseEntity<?> saveUser(@RequestBody User user) {
         try {
+            UserCart userCart = new UserCart();
+            userCart.setUser(user);
+            user.setUserCart(userCart);
+            
             User savedUser = userService.save(user);
             return ResponseEntity.status(HttpStatus.CREATED).body(savedUser);
         } catch (Exception e) {

@@ -1,0 +1,111 @@
+.app {
+  font-family: Arial, sans-serif;
+  background-color: black;
+  color: white;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px; /* Added top and bottom padding to avoid overlap with navbar and footer */
+  box-sizing: border-box;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #1c1c1c;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  max-width: 800px;
+  width: 100%;
+  margin: 50px 0;
+}
+
+.details-header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.details-header h2 {
+  font-size: 24px;
+  margin: 0;
+  color: antiquewhite;
+}
+
+.rating i {
+  color: antiquewhite;
+}
+
+.details-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.big-img img {
+  width: 100%;
+  max-width: 300px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.price {
+  font-size: 24px;
+  color: #ff5733;
+  margin: 10px 0;
+}
+
+.description {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.thumb {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.thumb img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  transition: transform 0.3s, border-color 0.3s;
+}
+
+.thumb img:hover,
+.thumb img.active {
+  transform: scale(1.1);
+  border-color: #ff5733;
+}
+
+.add-to-cart-button {
+  padding: 12px 24px;
+  background-color: #ff5733;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.add-to-cart-button:hover {
+  background-color: #c0392b;
+  transform: scale(1.05);
+}
