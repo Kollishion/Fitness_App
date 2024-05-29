@@ -11,7 +11,7 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 
-// DifficultyBasedExercises Component
+
 
 const DifficultyBasedExercises = ({ difficultyLevel }) => {
   const [exercises, setExercises] = useState([]);

@@ -83,6 +83,11 @@ npm install @gsap/react
 
 npm install @mui/material @emotion/react @emotion/styled
 
+# Carousel React Sleek
+
+npm install react-slick --save
+npm install slick-carousel --save
+
 # Start the React development server:
 
 npm start
