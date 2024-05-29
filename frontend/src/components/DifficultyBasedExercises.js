@@ -5,7 +5,6 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import { Link } from "react-router-dom";
 
 const DifficultyBasedExercises = ({ difficultyLevel }) => {
   const [exercises, setExercises] = useState([]);
@@ -100,7 +99,6 @@ const DifficultyBasedExercises = ({ difficultyLevel }) => {
       {exercises.map((exercise) => (
         <StyledCard key={exercise.id}>
           <CardHeader style={{ backgroundImage: `url(${exercise.imageUrl})` }}>
-            {/* Optionally, add any icon or content here */}
           </CardHeader>
           <CardContentWrapper>
             <Title>{exercise.title}</Title>

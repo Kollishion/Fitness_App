@@ -1,122 +1,106 @@
-* {
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: Arial, sans-serif;
-  }
-  
-  .allCart {
-    margin: 20px;
-    padding: 40px;
-    background-color: #f8f8f8;
-    border-radius: 8px;
-  }
-  
-  h1 {
-    color: #000;
-    text-align: center;
-    font-size: 2em;
-    margin-bottom: 20px;
-  }
-  
-  .itemCounter {
-    text-align: center;
-    margin-bottom: 40px;
-    color: #555;
-    font-size: 1.2em;
-  }
-  
-  button {
-    padding: 2px;
-    background-color: black;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    font-size: 1.1em;
-  }
-  
-  button:hover {
-    background-color: red;
-    color: white;
-  }
-  
-  .cartItems {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    position: relative;
-  }
-  
-  .itemImage img {
-    width: 100px;
-    height: 100px;
-    border-radius: 8px;
-  }
-  
-  .itemTitle {
-    flex: 1;
-    padding: 0 20px;
-    color: #333;
-    text-align: left;
-    font-size: 1.1em;
-  }
-  
-  .itemTitle h2 {
-    margin: 0;
-    font-size: 1.2em;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  
-  .itemTitle h3 {
-    margin: 0;
-    font-size: 1.1em;
-    color: #555;
-  }
-  
-  .remove {
-    background-color: transparent;
-    border: none;
-    color: red;
-    font-size: 1.3em;
-    cursor: pointer;
-    margin-right: 5%;
-  }
-  
-  .payNow button {
-    background-color: black;
-    color: white;
-    padding: 2px;
-    border-radius: 5px;
-    margin-left: 5%;
-  }
-  
-  .payNow button:hover {
-    background-color: darkred;
-  }
-  
-  .cartTotal {
-    text-align: center;
-    margin-top: 40px;
-  }
-  
-  .cartTotal h3 {
-    color: #000;
-    font-size: 1.5em;
-  }
-  
-  .cartTotal button {
-    margin-top: 20px;
-    padding: 15px 30px;
-    font-size: 1.2em;
-  }
-  
+.allCart {
+  margin: 20px;
+  padding: 40px;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+}
+
+.itemCounter {
+  text-align: center;
+  margin-bottom: 40px;
+  color: #555;
+  font-size: 1.2em;
+}
+
+.btn_cart {
+  padding: 2px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 1.1em;
+}
+
+.btn_cart:hover {
+  background-color: red;
+  color: white;
+}
+
+.cartItems {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.itemImage img {
+  width: 100px;
+  height: 100px;
+  border-radius: 8px;
+}
+
+.itemTitle {
+  flex: 1;
+  padding: 0 20px;
+  color: #333;
+  text-align: left;
+  font-size: 1.1em;
+}
+
+.itemTitle h2 {
+  margin: 0;
+  font-size: 1.2em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.itemTitle h3 {
+  margin: 0;
+  font-size: 1.1em;
+  color: #555;
+}
+
+.remove {
+  background-color: transparent;
+  border: none;
+  color: red;
+  font-size: 1.3em;
+  cursor: pointer;
+  margin-right: 5%;
+}
+
+.payNow button {
+  background-color: black;
+  color: white;
+  padding: 2px;
+  border-radius: 5px;
+  margin-left: 5%;
+}
+
+.payNow button:hover {
+  background-color: darkred;
+}
+
+.cartTotal {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.cartTotal h3 {
+  color: #000;
+  font-size: 1.5em;
+}
+
+.cartTotal button {
+  margin-top: 20px;
+  padding: 15px 30px;
+  font-size: 1.2em;
+}

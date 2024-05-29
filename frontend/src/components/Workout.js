@@ -18,11 +18,11 @@ const Workout = () => {
                   <img src={Beginner2} alt="Beginner" />
                 </div>
                 <div className="icon">
-                  <a href="#" className="iconBox">
+                  <Link to="/beginner_workout" className="iconBox">
                     <span className="material-symbols-outlined">
                       <MdArrowOutward />
                     </span>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -46,11 +46,11 @@ const Workout = () => {
                   <img src={Intermediate2} alt="Advanced" />
                 </div>
                 <div className="icon">
-                  <a href="#" className="iconBox">
+                  <Link to="/intermediate_workout" className="iconBox">
                     <span className="material-symbols-outlined">
                       <MdArrowOutward />
                     </span>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -74,11 +74,11 @@ const Workout = () => {
                   <img src={Advanced2} alt="Advanced" />
                 </div>
                 <div className="icon">
-                  <a href="#" className="iconBox">
+                  <Link to="/advanced_workout" className="iconBox">
                     <span className="material-symbols-outlined">
                       <MdArrowOutward />
                     </span>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

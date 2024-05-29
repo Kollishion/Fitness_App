@@ -1,181 +1,162 @@
-/* CombinedStyles.css */
+.app {
+  max-width: 1200px;
+  width: 100%;
+  margin: 100px auto;
+  box-shadow: 0 0 5px #ccc;
+}
 
-* {
-    padding: 0;
-    box-sizing: border-box;
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-      sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-  
-  code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-      monospace;
-  }
-  
-  .app {
-    max-width: 1200px;
-    width: 100%;
-    margin: 100px auto;
-    box-shadow: 0 0 5px #ccc;
-  }
-  
-  .details {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    padding: 30px 0;
-  }
-  
-  .details .big-img {
-    max-width: 500px;
-    min-width: 290px;
-    overflow: hidden;
-    margin: 25px;
-  }
-  
-  .big-img img {
-    width: 100%;
-    height: 100%;
-    max-height: 400px;
-    display: block;
-    object-fit: cover;
-  }
-  
-  .box {
-    max-width: 500px;
-    min-width: 290px;
-    margin: 25px;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
-    position: relative;
-  }
-  
-  .cart-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-  }
-  
-  .box .row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px;
-  }
-  
-  .box .rating {
-    display: flex;
-    align-items: center;
-    font-size: 16px;
-  }
-  
-  .box .rating i {
-    color: gold;
-    margin-right: 5px;
-  }
-  
-  .box .rating span {
-    margin-left: 10px;
-    color: #555;
-  }
-  
-  .box .price {
-    margin-top: 10px;
-    font-size: 24px;
-    color: #343232;
-    background-color: #4fbe53;
-    padding: 10px 20px;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    display: inline-block;
-    text-decoration: none;
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
-  
-  .box .price:hover {
-    background-color: #45a049;
-    color: #0d0d0d;
-  }
-  
-  .box p {
-    line-height: 1.5;
-    margin: 15px 0;
-  }
-  
-  .thumb {
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: 20px;
-  }
-  
-  .thumb img {
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    margin-right: 10px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-  
-  .thumb img.active {
-    border-color: lightseagreen;
-  }
-  
-  .add-to-cart-button {
-    background-color: black;
-    border: none;
-    color: white;
-    padding: 12px 24px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin-top: 20px;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 50%;
-    text-transform: uppercase;
-  }
-  
-  .add-to-cart-button:hover {
-    background-color: #333;
-  }
-  
-  .cart {
-    background-color: black;
-    color: #fff;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    padding: 10px;
-    border-radius: 5px;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .cart img {
-    width: 20px;
-    height: 20px;
-  }
-  
-  .cart:hover {
-    background-color: #4b4a4a;
-  }
-  
-  .box .row h2 {
-    text-transform: uppercase;
-  }
-  
+.details {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 30px 0;
+}
+
+.details .big-img {
+  max-width: 500px;
+  min-width: 290px;
+  overflow: hidden;
+  margin: 25px;
+}
+
+.big-img img {
+  width: 100%;
+  height: 100%;
+  max-height: 400px;
+  display: block;
+  object-fit: cover;
+}
+
+.box {
+  max-width: 500px;
+  min-width: 290px;
+  margin: 25px;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  position: relative;
+}
+
+.cart-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.box .row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.box .rating {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+}
+
+.box .rating i {
+  color: gold;
+  margin-right: 5px;
+}
+
+.box .rating span {
+  margin-left: 10px;
+  color: #555;
+}
+
+.box .price {
+  margin-top: 10px;
+  font-size: 24px;
+  color: #343232;
+  background-color: #4fbe53;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  display: inline-block;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.box .price:hover {
+  background-color: #45a049;
+  color: #0d0d0d;
+}
+
+.box p {
+  line-height: 1.5;
+  margin: 15px 0;
+}
+
+.thumb {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.thumb img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.thumb img.active {
+  border-color: lightseagreen;
+}
+
+.add-to-cart-button {
+  background-color: black;
+  border: none;
+  color: white;
+  padding: 12px 24px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 50%;
+  text-transform: uppercase;
+}
+
+.add-to-cart-button:hover {
+  background-color: #333;
+}
+
+.cart {
+  background-color: black;
+  color: #fff;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart img {
+  width: 20px;
+  height: 20px;
+}
+
+.cart:hover {
+  background-color: #4b4a4a;
+}
+
+.box .row h2 {
+  text-transform: uppercase;
+}

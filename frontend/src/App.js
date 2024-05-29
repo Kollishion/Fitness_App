@@ -14,6 +14,9 @@ import "./App.css";
 import Workout from "./components/Workout";
 import Logout from "./pages/Logout";
 import Details from "./components/details/Details";
+import Beginner_Workout from "./pages/Beginner_Workout";
+import Intermediate_Workout from "./pages/Intermediate_Workout";
+import Advanced_Workout from "./pages/Advanced_Workout";
 
 const App = ({ isLoggedIn }) => {
   const location = useLocation();
@@ -57,6 +60,9 @@ const App = ({ isLoggedIn }) => {
           <Route path="/Workout" element={<Workout />} />
           <Route path="/logout" element={<Logout />} />
           <Route path="/details/:id" element={<Details />} />
+          <Route path="/beginner_workout" element={<Beginner_Workout />} />
+          <Route path="/intermediate_workout" element={<Intermediate_Workout />} />
+          <Route path="/advanced_workout" element={<Advanced_Workout />} />
         </Routes>
       </Box>
       {shouldShowFooter && <Footer />}
