@@ -32,9 +32,18 @@ public class AdminService {
     public List<Admin> getAllAdmins() {
         return adminRepository.findAll();
     }
-
+    
     public Optional<Admin> getAdminById(Integer adminId) {
         return adminRepository.findById(adminId);
+    }
+    
+    public Admin authenticate(String email, String password) {
+        Optional<Admin> admin = adminRepository.findByAdminEmail(email);
+        if (admin.isPresent() && admin.get().getAdminPassword().equals(password)) {
+            return admin.get();
+        } else {
+            throw new RuntimeException("Invalid email or password");
+        }
     }
 
     public Admin addAdmin(Admin admin) {

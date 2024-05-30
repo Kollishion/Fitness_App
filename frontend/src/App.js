@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Route, Routes, useLocation } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import { Box } from "@mui/material";
 import ExerciseDetail from "./pages/ExerciseDetail";
 import Home from "./pages/Home";
@@ -26,11 +26,19 @@ import ReviewsData from "./admin/ReviewsData";
 import OrderData from "./admin/OrderData";
 import EditProductForm from "./admin/EditProductForm";
 import AddProductForm from "./admin/AddProductForm";
-import Cart from "./components/cart/Cart";
+import AdminLogin from "./pages/AdminLogin";
+import AdminLogout from "./pages/AdminLogout";
 
-const App = ({ isLoggedIn }) => {
-  const [cartCount, setCartCount] = useState(0);
+const App = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Check if the admin session token exists
+    const sessionToken = localStorage.getItem("adminSessionToken");
+    setIsLoggedIn(!!sessionToken);
+  }, [location.pathname]);
 
   const isLoginRoute = location.pathname === "/Login";
   const isExerciseDetailRoute = location.pathname === "/exerciseDetail";
@@ -48,10 +56,10 @@ const App = ({ isLoggedIn }) => {
 
   return (
     <Box sx={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
-      {shouldShowNavbar && <Navbar cartCount={cartCount} />}
+      {shouldShowNavbar && <Navbar cartCount={0} />}
       <Box sx={{ flex: 1 }}>
         <Routes>
-          {!isLoggedIn && <Route path="/" element={<Home />} />}
+          <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/exerciseDetail" element={<ExerciseDetail />} />
@@ -73,7 +81,7 @@ const App = ({ isLoggedIn }) => {
           <Route path="/logout" element={<Logout />} />
           <Route
             path="/details/:id"
-            element={<Details setCartCount={setCartCount} />}
+            element={<Details setCartCount={() => {}} />}
           />
           <Route path="/beginner_workout" element={<Beginner_Workout />} />
           <Route
@@ -81,18 +89,24 @@ const App = ({ isLoggedIn }) => {
             element={<Intermediate_Workout />}
           />
           <Route path="/advanced_workout" element={<Advanced_Workout />} />
-          <Route path="/admin" element={<AdminDashboard />} />
-          <Route path="/admin/user-data" element={<UserData />} />
-          <Route path="/admin/admin-data" element={<AdminData />} />
-          <Route path="/admin/reviews-data" element={<ReviewsData />} />
-          <Route path="/admin/order-data" element={<OrderData />} />
-          <Route path="/admin/product-data" element={<ProductData />} />
-          <Route
-            path="/admin/products/edit/:productId"
-            element={<EditProductForm />}
-          />
-          <Route path="/admin/products/add" element={<AddProductForm />} />
-          <Route path="/admin/exercise-data" element={<ExercisePage />} />
+          <Route path="/admin" element={<AdminLogin />} />
+          {isLoggedIn && (
+            <>
+              <Route path="/admin/dashboard" element={<AdminDashboard />} />
+              <Route path="/admin/user-data" element={<UserData />} />
+              <Route path="/admin/admin-data" element={<AdminData />} />
+              <Route path="/admin/reviews-data" element={<ReviewsData />} />
+              <Route path="/admin/order-data" element={<OrderData />} />
+              <Route path="/admin/product-data" element={<ProductData />} />
+              <Route
+                path="/admin/products/edit/:productId"
+                element={<EditProductForm />}
+              />
+              <Route path="/admin/products/add" element={<AddProductForm />} />
+              <Route path="/admin/exercise-data" element={<ExercisePage />} />
+              <Route path="/admin/logout" element={<AdminLogout />} />
+            </>
+          )}
         </Routes>
       </Box>
       {shouldShowFooter && <Footer />}
