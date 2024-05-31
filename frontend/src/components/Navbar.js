@@ -10,7 +10,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import "../stylesheets/navbar.css";
 
-const Navbar = ({ cartCount }) => {
+const Navbar = ({ cartCount, isLoggedIn, handleLogout }) => {
   const [isOpen, setIsOpen] = useState(false);
   const handleClick = () => {
     setIsOpen(!isOpen);
@@ -74,24 +74,44 @@ const Navbar = ({ cartCount }) => {
         mt={{ xs: "10px", sm: "0px" }}
         order={{ xs: 3, sm: 3 }}
       >
-        <Button
-          component={Link}
-          to="/Login"
-          sx={{
-            textDecoration: "none",
-            color: "white",
-            backgroundColor: "#FF2625",
-            padding: "2px 18px",
-            borderRadius: "5px",
-            cursor: "pointer",
-            transition: "all 0.3s",
-            "&:hover": {
-              backgroundColor: "#E24A40",
-            },
-          }}
-        >
-          Login
-        </Button>
+        {isLoggedIn ? (
+          <Button
+            onClick={handleLogout}
+            sx={{
+              textDecoration: "none",
+              color: "white",
+              backgroundColor: "#FF2625",
+              padding: "2px 18px",
+              borderRadius: "5px",
+              cursor: "pointer",
+              transition: "all 0.3s",
+              "&:hover": {
+                backgroundColor: "#E24A40",
+              },
+            }}
+          >
+            Logout
+          </Button>
+        ) : (
+          <Button
+            component={Link}
+            to="/Login"
+            sx={{
+              textDecoration: "none",
+              color: "white",
+              backgroundColor: "#FF2625",
+              padding: "2px 18px",
+              borderRadius: "5px",
+              cursor: "pointer",
+              transition: "all 0.3s",
+              "&:hover": {
+                backgroundColor: "#E24A40",
+              },
+            }}
+          >
+            Login
+          </Button>
+        )}
 
         <Button
           component={Link}

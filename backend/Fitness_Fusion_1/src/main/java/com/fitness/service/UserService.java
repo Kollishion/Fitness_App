@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.fitness.beans.Product;
 import com.fitness.beans.User;
 import com.fitness.repository.UserRepository;
 import com.fitness.security.OTPGenerator;
@@ -31,6 +32,10 @@ public class UserService {
 
     public User findByEmail(String email) {
         return userRepository.findByEmail(email);
+    }
+    
+    public User getuserById(Integer id) {
+        return userRepository.findById(id).orElse(null);
     }
 
     public User save(User user) throws Exception {

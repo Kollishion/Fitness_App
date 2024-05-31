@@ -105,7 +105,6 @@ public class AdminService {
         dto.setUsername(user.getUsername());
         dto.setEmail(user.getEmail());
         dto.setPhoneNumber(user.getPhoneNumber());
-        dto.setPremium(user.getPremium());
         return dto;
     }
     

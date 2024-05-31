@@ -34,15 +34,10 @@ const AdminLogin = () => {
     const token = sessionStorage.getItem("adminAuthToken");
     if (token) {
       setIsLoggedIn(true);
+      navigate("/admin/dashboard");
     } else {
       setIsLoggedIn(false);
     }
-  };
-
-  const handleLogout = () => {
-    sessionStorage.removeItem("adminAuthToken");
-    setIsLoggedIn(false);
-    navigate("/admin/login");
   };
 
   const handleAdminLogin = async (e) => {
@@ -95,7 +90,11 @@ const AdminLogin = () => {
             Login
           </Button>
         </form>
-        {errorMessage && <Typography color="error">{errorMessage}</Typography>}
+        {errorMessage && (
+          <Typography color="error" sx={{ mt: 2 }}>
+            {errorMessage}
+          </Typography>
+        )}
       </AdminLoginForm>
     </AdminLoginContainer>
   );

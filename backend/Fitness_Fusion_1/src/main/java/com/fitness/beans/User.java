@@ -22,13 +22,20 @@ public class User{
     private String password;
     @Column(name = "email", nullable = false)
     private String email;
-    @Column(name = "security_question", nullable = false)
+    public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	@Column(name = "security_question", nullable = true)
     private String security_question;
     @Column(name = "answer", nullable = false)
     private String answer;
     @Column(name = "phoneNumber", nullable = false)
     private Long phoneNumber;
-    
+    @Column(name = "address", nullable = true)
+    private String address;
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER, optional = true)
     private UserCart userCart;
     
@@ -41,8 +48,6 @@ public class User{
 	public void setSecurity_question(String security_question) {
 		this.security_question = security_question;
 	}
-	@Column(name = "premium", columnDefinition = "char(1) default '0'")
-    private char premium = '0';
     @Column(name = "otp")
     private String otp;
 	public Integer getUser_id() {
@@ -80,12 +85,6 @@ public class User{
 	}
 	public void setAnswer(String answer) {
 		this.answer = answer;
-	}
-	public char getPremium() {
-		return premium;
-	}
-	public void setPremium(char premium) {
-		this.premium = premium;
 	}
 	public String getOtp() {
 		return otp;

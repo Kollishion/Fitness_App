@@ -1,22 +1,22 @@
-import React, { useEffect, useState } from 'react'
-import { Box, Button, Stack, TextField, Typography } from '@mui/material';
-import { fetchData, excerciseOptions } from '../utils/fetchData';
+import React, { useState } from "react";
+import { Box, Button, Stack, TextField, Typography } from "@mui/material";
+import { fetchData, excerciseOptions } from "../utils/fetchData";
 
 const SearchExcercises = () => {
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState("");
   const handleSearch = async () => {
-    try{
-      if(search) {
-      const excerciseData = await fetchData(
-        "",
-        excerciseOptions
-      );
+    try {
+      if (search) {
+        const excerciseData = await fetchData(
+          "http://localhost:8080/exercises/getAll",
+          excerciseOptions
+        );
         console.log(excerciseData);
-    }
-    }catch(e){
+      }
+    } catch (e) {
       console.log(e.message);
     }
-  }
+  };
   return (
     <Stack alignItems="center" mt="37px" justifyContent="center" p="20px">
       <Typography
@@ -43,20 +43,25 @@ const SearchExcercises = () => {
           onChange={(e) => setSearch(e.target.value.toLowerCase())}
           placeholder="Search Excercises"
         ></TextField>
-        <Button className="search-btn" sx={{
-          bgcolor: "#FF2625",
-          color: '#f5f5f5',
-          textTransform: 'none',
-          width: { lg: '175px', xs: '80px' },
-          fontSize: { lg: '20px', xs: '14px' },
-          height: '56px',
-          position: 'absolute',
-          right: '0'
-        }}
-        onClick={handleSearch}>Search</Button>
+        <Button
+          className="search-btn"
+          sx={{
+            bgcolor: "#FF2625",
+            color: "#f5f5f5",
+            textTransform: "none",
+            width: { lg: "175px", xs: "80px" },
+            fontSize: { lg: "20px", xs: "14px" },
+            height: "56px",
+            position: "absolute",
+            right: "0",
+          }}
+          onClick={handleSearch}
+        >
+          Search
+        </Button>
       </Box>
     </Stack>
   );
-}
+};
 
-export default SearchExcercises
+export default SearchExcercises;

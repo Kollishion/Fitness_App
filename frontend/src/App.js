@@ -28,35 +28,62 @@ import EditProductForm from "./admin/EditProductForm";
 import AddProductForm from "./admin/AddProductForm";
 import AdminLogin from "./pages/AdminLogin";
 import AdminLogout from "./pages/AdminLogout";
+import UserProfile from "./pages/UserProfile";
+import PrivateRoute from "./components/PrivateRoute";
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Check if the admin session token exists
-    const sessionToken = localStorage.getItem("adminSessionToken");
-    setIsLoggedIn(!!sessionToken);
+    checkLoggedIn();
+    checkAdminLoggedIn();
   }, [location.pathname]);
 
-  const isLoginRoute = location.pathname === "/Login";
+  const checkLoggedIn = () => {
+    const token = sessionStorage.getItem("authToken");
+    setIsLoggedIn(!!token);
+  };
+
+  const checkAdminLoggedIn = () => {
+    const token = sessionStorage.getItem("adminAuthToken");
+    setIsAdminLoggedIn(!!token);
+  };
+
+  const handleLogout = () => {
+    sessionStorage.removeItem("authToken");
+    setIsLoggedIn(false);
+    navigate("/logout");
+  };
+
+  const isLoginRoute =
+    location.pathname === "/Login" || location.pathname === "/admin";
   const isExerciseDetailRoute = location.pathname === "/exerciseDetail";
   const isAdvanced = location.pathname === "/advanced";
   const isIntermediate = location.pathname === "/intermediate";
   const isBeginner = location.pathname === "/beginner";
+  const isAdminRoute = location.pathname.startsWith("/admin");
 
-  const shouldShowNavbar = !isLoginRoute;
+  const shouldShowNavbar = !isLoginRoute && !isAdminRoute;
   const shouldShowFooter =
     !isLoginRoute &&
     !isBeginner &&
     !isIntermediate &&
     !isAdvanced &&
-    !isExerciseDetailRoute;
+    !isExerciseDetailRoute &&
+    !isAdminRoute;
 
   return (
     <Box sx={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
-      {shouldShowNavbar && <Navbar cartCount={0} />}
+      {shouldShowNavbar && (
+        <Navbar
+          cartCount={0}
+          isLoggedIn={isLoggedIn}
+          handleLogout={handleLogout}
+        />
+      )}
       <Box sx={{ flex: 1 }}>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -75,38 +102,36 @@ const App = () => {
             path="/advanced"
             element={<DifficultyBasedExercises difficultyLevel="2" />}
           />
-          <Route path="/cart/:id" element={<ShopCart />} />
-          <Route path="/Login" element={<Login />} />
-          <Route path="/Workout" element={<Workout />} />
-          <Route path="/logout" element={<Logout />} />
+          <Route path="/checkout" element={<ShopCart />} />
+          <Route path="/workout" element={<Workout />} />
+          <Route path="/Beginner_Workout" element={<Beginner_Workout />} />
           <Route
-            path="/details/:id"
-            element={<Details setCartCount={() => {}} />}
-          />
-          <Route path="/beginner_workout" element={<Beginner_Workout />} />
-          <Route
-            path="/intermediate_workout"
+            path="/Intermediate_Workout"
             element={<Intermediate_Workout />}
           />
-          <Route path="/advanced_workout" element={<Advanced_Workout />} />
+          <Route path="/Advanced_Workout" element={<Advanced_Workout />} />
+          <Route path="/details" element={<Details />} />
+          <Route path="/Login" element={<Login />} />
+          <Route path="/Logout" element={<Logout />} />
           <Route path="/admin" element={<AdminLogin />} />
-          {isLoggedIn && (
-            <>
-              <Route path="/admin/dashboard" element={<AdminDashboard />} />
-              <Route path="/admin/user-data" element={<UserData />} />
-              <Route path="/admin/admin-data" element={<AdminData />} />
-              <Route path="/admin/reviews-data" element={<ReviewsData />} />
-              <Route path="/admin/order-data" element={<OrderData />} />
-              <Route path="/admin/product-data" element={<ProductData />} />
-              <Route
-                path="/admin/products/edit/:productId"
-                element={<EditProductForm />}
-              />
-              <Route path="/admin/products/add" element={<AddProductForm />} />
-              <Route path="/admin/exercise-data" element={<ExercisePage />} />
-              <Route path="/admin/logout" element={<AdminLogout />} />
-            </>
-          )}
+          <Route path="/AdminLogout" element={<AdminLogout />} />
+          <Route path="/admin/dashboard" element={<AdminDashboard />} />
+          <Route path="/admin/userData" element={<UserData />} />
+          <Route path="/admin/adminData" element={<AdminData />} />
+          <Route path="/admin/productData" element={<ProductData />} />
+          <Route path="/admin/exercisePage" element={<ExercisePage />} />
+          <Route path="/admin/reviewsData" element={<ReviewsData />} />
+          <Route path="/admin/orderData" element={<OrderData />} />
+          <Route path="/admin/editProduct/:id" element={<EditProductForm />} />
+          <Route path="/admin/addProduct" element={<AddProductForm />} />
+          <Route
+            path="/userProfile"
+            element={
+              <PrivateRoute>
+                <UserProfile />
+              </PrivateRoute>
+            }
+          />
         </Routes>
       </Box>
       {shouldShowFooter && <Footer />}

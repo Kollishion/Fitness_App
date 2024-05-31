@@ -5,6 +5,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
+import SearchExcercises from "./SearchExcercises";
 
 const DifficultyBasedExercises = ({ difficultyLevel }) => {
   const [exercises, setExercises] = useState([]);
@@ -96,10 +97,12 @@ const DifficultyBasedExercises = ({ difficultyLevel }) => {
 
   return (
     <Root>
+      <SearchExcercises />
       {exercises.map((exercise) => (
         <StyledCard key={exercise.id}>
-          <CardHeader style={{ backgroundImage: `url(${exercise.imageUrl})` }}>
-          </CardHeader>
+          <CardHeader
+            style={{ backgroundImage: `url(${exercise.imageUrl})` }}
+          ></CardHeader>
           <CardContentWrapper>
             <Title>{exercise.title}</Title>
             <Text>{exercise.instructions}</Text>

@@ -6,6 +6,7 @@ import { BiSolidLockAlt } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 import { FaPhoneAlt } from "react-icons/fa";
 import Logout from "./Logout";
+import { TbAddressBook } from "react-icons/tb";
 
 const LoginForm = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -23,6 +24,7 @@ const LoginForm = () => {
     confirmPassword: "",
     answer: "",
     phoneNumber: "",
+    address: "",
   });
   const [registerError, setRegisterError] = useState("");
 
@@ -129,6 +131,7 @@ const LoginForm = () => {
         username: registerData.username,
         email: registerData.email,
         password: registerData.password,
+        securityQuestion: "What is you pet name?",
         answer: registerData.answer, // Add the security answer to the payload
         phoneNumber: registerData.phoneNumber, // Add the phone number to the payload
       });
@@ -136,7 +139,7 @@ const LoginForm = () => {
         setAction("");
         setRegisterError("");
         setErrorMessage("");
-        navigate("/logout"); // Redirect to login after registration
+        navigate("/"); // Redirect to login after registration
       }
     } catch (error) {
       setRegisterError("Error registering user: " + error.message);
@@ -307,6 +310,17 @@ const LoginForm = () => {
                     required
                   />
                   <FaPhoneAlt className="icon" />
+                </div>
+                <div className="input-box">
+                  <input
+                    type="text"
+                    placeholder="Address"
+                    name="address"
+                    value={registerData.address}
+                    onChange={handleRegisterChange}
+                    required
+                  />
+                  <TbAddressBook className="icon" />
                 </div>
                 <div className="remember-forgot">
                   <label>
